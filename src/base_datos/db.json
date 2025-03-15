@@ -1,0 +1,22 @@
+{
+  "bienes": [
+    {
+      "id": "18",
+      "nombre": "Papa",
+      "descripcion": "Una papa",
+      "material": "Glucosa",
+      "peso": 0.1,
+      "valor": 1
+    },
+    {
+      "id": "1",
+      "nombre": "Espada de acero",
+      "descripcion": "Una espada perfecta para luchar contra humanos",
+      "material": "Acero",
+      "peso": 3,
+      "valor": 300
+    }
+  ],
+  "mercaderes": [],
+  "clientes": []
+}
