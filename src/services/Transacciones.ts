@@ -57,6 +57,7 @@ export async function registrarVenta(bienId: string, clienteId: string, mercader
 }
 
 export async function registrarCompra(bien: Bien, mercaderId: string, coronas: number) {
+  /**
   await db.read();
 
   const mercader = db.data.mercaderes.find(m => m.id === mercaderId);
@@ -71,9 +72,11 @@ export async function registrarCompra(bien: Bien, mercaderId: string, coronas: n
   await db.write();
 
   console.log(`📦 Compra realizada: ${bien.nombre} adquirido de ${mercader.nombre} por ${coronas} coronas.`);
+  */
 }
 
 export async function procesarDevolucion(bienId: string, origen: "cliente" | "mercader", coronas: number) {
+  /**
   await db.read();
 
   const bien = db.data.bienes.find(b => b.id === bienId);
@@ -102,4 +105,5 @@ export async function procesarDevolucion(bienId: string, origen: "cliente" | "me
   await db.write();
 
   console.log(`🔄 Devolución procesada: ${bien.nombre} devuelto por un ${origen} por ${coronas} coronas.`);
+  */
 }

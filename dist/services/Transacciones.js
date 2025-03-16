@@ -37,40 +37,52 @@ export async function registrarVenta(bienId, clienteId, mercaderId) {
     console.log(`💰 Venta realizada: ${bien.nombre} vendido a ${cliente.nombre} por ${bien.valor} coronas.`);
 }
 export async function registrarCompra(bien, mercaderId, coronas) {
+    /**
     await db.read();
+  
     const mercader = db.data.mercaderes.find(m => m.id === mercaderId);
     if (!mercader) {
-        throw new Error("Mercader no encontrado.");
+      throw new Error("Mercader no encontrado.");
     }
+  
     const transaccion = new Transaccion('compra', bien.id, coronas, undefined, mercaderId);
+  
     db.data.transacciones.push(transaccion);
     db.data.bienes.push(bien);
     await db.write();
+  
     console.log(`📦 Compra realizada: ${bien.nombre} adquirido de ${mercader.nombre} por ${coronas} coronas.`);
+    */
 }
 export async function procesarDevolucion(bienId, origen, coronas) {
+    /**
     await db.read();
+  
     const bien = db.data.bienes.find(b => b.id === bienId);
     if (!bien) {
-        throw new Error("Bien no encontrado.");
+      throw new Error("Bien no encontrado.");
     }
+  
     let clienteId, mercaderId;
     if (origen === "cliente") {
-        const cliente = db.data.clientes.find(c => c.id === bienId);
-        if (!cliente) {
-            throw new Error("Cliente no encontrado.");
-        }
-        clienteId = cliente.id;
+      const cliente = db.data.clientes.find(c => c.id === bienId);
+      if (!cliente) {
+        throw new Error("Cliente no encontrado.");
+      }
+      clienteId = cliente.id;
+    } else {
+      const mercader = db.data.mercaderes.find(m => m.id === bienId);
+      if (!mercader) {
+        throw new Error("Mercader no encontrado.");
+      }
+      mercaderId = mercader.id;
     }
-    else {
-        const mercader = db.data.mercaderes.find(m => m.id === bienId);
-        if (!mercader) {
-            throw new Error("Mercader no encontrado.");
-        }
-        mercaderId = mercader.id;
-    }
+  
     const transaccion = new Transaccion('devolucion', bienId, coronas, clienteId, mercaderId);
+  
     db.data.transacciones.push(transaccion);
     await db.write();
+  
     console.log(`🔄 Devolución procesada: ${bien.nombre} devuelto por un ${origen} por ${coronas} coronas.`);
+    */
 }
