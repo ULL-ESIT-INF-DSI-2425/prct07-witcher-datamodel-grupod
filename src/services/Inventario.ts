@@ -6,16 +6,28 @@ import { Bien } from "../models/Bien.js";
  */
 export async function incluirBien(bien: Bien) {
   await db.read();
-  db.data.bienes.push(bien);
+  // Asegurar que el bien sea una instancia de Bien antes de guardarlo
+  const nuevoBien = new Bien(
+    bien.id,
+    bien.nombre,
+    bien.descripcion,
+    bien.material,
+    bien.peso,
+    bien.valor
+  );
+  db.data.bienes.push(nuevoBien);
   await db.write();
 }
+
 
 /**
  * Obtiene todos los bienes del inventario.
  */
 export async function listarBienes() {
   await db.read();
-  return db.data.bienes;
+  return db.data.bienes.map(
+    bien => new Bien(bien.id, bien.nombre, bien.descripcion, bien.material, bien.peso, bien.valor)
+  );
 }
 
 /**

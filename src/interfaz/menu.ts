@@ -8,7 +8,7 @@ async function main() {
 
     // Pregunta al usuario qué acción desea realizar
     const respuesta = await inquirer.prompt([
-        { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Agregar bien", "Ver bienes", "Salir"] }
+        { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Añadir bien", "Ver bienes", "Salir"] }
     ]);
 
     if (respuesta.opcion === "Añadir bien") {

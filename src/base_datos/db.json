@@ -15,6 +15,14 @@
       "material": "Acero",
       "peso": 3,
       "valor": 300
+    },
+    {
+      "id": "1",
+      "nombre": "jola",
+      "descripcion": "dsx",
+      "material": "metak",
+      "peso": 5,
+      "valor": 555
     }
   ],
   "mercaderes": [],
