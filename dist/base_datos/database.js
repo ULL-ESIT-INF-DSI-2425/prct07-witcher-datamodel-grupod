@@ -5,10 +5,11 @@ const db = new Low(new JSONFile("src/base_datos/db.json"), {
     bienes: [],
     mercaderes: [],
     clientes: [],
+    transacciones: [],
 });
 export async function initDB() {
     await db.read();
-    db.data ||= { bienes: [], mercaderes: [], clientes: [] }; // Asegurar estructura inicial
+    db.data ||= { bienes: [], mercaderes: [], clientes: [], transacciones: [] }; // Asegurar estructura inicial
     await db.write();
 }
 export { db };

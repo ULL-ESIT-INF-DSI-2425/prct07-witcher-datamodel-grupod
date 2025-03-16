@@ -3,7 +3,8 @@ export class Cliente {
     public id: string,
     public nombre: string,
     public raza: string,
-    public ubicacion: string
+    public ubicacion: string,
+    public dinero: number
   ) {}
 
   mostrarInfo(): string {

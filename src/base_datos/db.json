@@ -1,30 +1,84 @@
 {
   "bienes": [
     {
+      "id": "1",
+      "nombre": "Corona",
+      "tipo": "Corona",
+      "precio": 1
+    },
+    {
       "id": "18",
-      "nombre": "Papa",
-      "descripcion": "Una papa",
-      "material": "Glucosa",
-      "peso": 0.1,
-      "valor": 1
-    },
-    {
-      "id": "1",
-      "nombre": "Espada de acero",
-      "descripcion": "Una espada perfecta para luchar contra humanos",
-      "material": "Acero",
-      "peso": 3,
-      "valor": 300
-    },
-    {
-      "id": "1",
-      "nombre": "jola",
-      "descripcion": "dsx",
-      "material": "metak",
-      "peso": 5,
-      "valor": 555
+      "nombre": "Corona de oro",
+      "tipo": "Corona",
+      "precio": 1
     }
   ],
-  "mercaderes": [],
-  "clientes": []
+  "mercaderes": [
+    {
+      "id": "12",
+      "nombre": "Ismael",
+      "tipo": "Usurero",
+      "ubicacion": "Güímar",
+      "dinero": 100
+    },
+    {
+      "id": "2",
+      "nombre": "Abdonetti",
+      "tipo": "Usurero",
+      "ubicacion": "Tejina",
+      "dinero": 101
+    }
+  ],
+  "clientes": [
+    {
+      "id": "1",
+      "nombre": "Dani",
+      "raza": "Macaco",
+      "ubicacion": "La Cuesta",
+      "dinero": 99
+    },
+    {
+      "id": "2",
+      "nombre": "Nano",
+      "raza": "Dios",
+      "ubicacion": "Melbourne",
+      "dinero": 10000
+    }
+  ],
+  "transacciones": [
+    {
+      "id": "1",
+      "fecha": "2021-05-01",
+      "bien": "1",
+      "mercader": "2",
+      "cliente": "1",
+      "cantidad": 1
+    },
+    {
+      "id": "2",
+      "fecha": "2021-05-01",
+      "bien": "18",
+      "mercader": "12",
+      "cliente": "2",
+      "cantidad": 1
+    },
+    {
+      "id": "3",
+      "tipo": "venta",
+      "fecha": "2025-03-16T14:00:47.033Z",
+      "bienId": "1",
+      "clienteId": "1",
+      "mercaderId": "2",
+      "coronas": 3
+    },
+    {
+      "id": "4",
+      "tipo": "venta",
+      "fecha": "2025-03-16T14:13:18.447Z",
+      "bienId": "18",
+      "clienteId": "1",
+      "mercaderId": "2",
+      "coronas": 1
+    }
+  ]
 }

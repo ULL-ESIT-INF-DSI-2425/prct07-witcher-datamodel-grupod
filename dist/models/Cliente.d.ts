@@ -3,6 +3,7 @@ export declare class Cliente {
     nombre: string;
     raza: string;
     ubicacion: string;
-    constructor(id: string, nombre: string, raza: string, ubicacion: string);
+    dinero: number;
+    constructor(id: string, nombre: string, raza: string, ubicacion: string, dinero: number);
     mostrarInfo(): string;
 }
