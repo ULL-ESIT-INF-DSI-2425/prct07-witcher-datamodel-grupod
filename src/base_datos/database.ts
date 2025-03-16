@@ -14,7 +14,7 @@ type Data = {
 };
 
 // Configuración de la base de datos
-const db = new Low<Data>(new JSONFile<Data>("src/database/db.json"), {
+const db = new Low<Data>(new JSONFile<Data>("src/base_datos/db.json"), {
   bienes: [],
   mercaderes: [],
   clientes: [],
