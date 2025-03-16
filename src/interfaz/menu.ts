@@ -1,6 +1,6 @@
 import inquirer from "inquirer"; // Importa la librería inquirer para interactuar con el usuario a través de la consola
 import { initDB } from "../base_datos/database.js"; // Importa la función para inicializar la base de datos
-import { añadirBien, listarBienes } from "../services/Inventario.js"; // Importa las funciones para añadir y listar bienes del inventario
+import { incluirBien, listarBienes } from "../services/Inventario.js"; // Importa las funciones para añadir y listar bienes del inventario
 import { Bien } from "../models/Bien.js"; // Importa la clase Bien que representa un bien en el inventario
 
 async function main() {
@@ -23,7 +23,7 @@ async function main() {
         ]);
         
         // Crea una nueva instancia de Bien con los datos ingresados y la añade al inventario
-        await añadirBien(new Bien(nuevoBien.id, nuevoBien.nombre, nuevoBien.descripcion, nuevoBien.material, nuevoBien.peso, nuevoBien.valor));
+        await incluirBien(new Bien(nuevoBien.id, nuevoBien.nombre, nuevoBien.descripcion, nuevoBien.material, nuevoBien.peso, nuevoBien.valor));
         console.log("Bien agregado exitosamente.");
     } else if (respuesta.opcion === "Ver bienes") {
         // Si el usuario elige "Ver bienes", se obtiene la lista de bienes del inventario y se muestra en la consola
