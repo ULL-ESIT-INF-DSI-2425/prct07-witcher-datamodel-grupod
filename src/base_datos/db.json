@@ -7,6 +7,14 @@
       "material": "Oro",
       "peso": 0.01,
       "valor": 1
+    },
+    {
+      "id": "1",
+      "nombre": "Corona",
+      "descripcion": "Moneda de curso legal en los Reinos del Norte.",
+      "material": "Oro",
+      "peso": 0.01,
+      "valor": 1
     }
   ],
   "mercaderes": [
@@ -15,17 +23,8 @@
       "nombre": "Ismael",
       "tipo": "Usurero",
       "ubicacion": "Güímar",
-      "dinero": 98,
-      "bienes": [
-        {
-          "id": "1",
-          "nombre": "Corona",
-          "descripcion": "Moneda de curso legal en los Reinos del Norte.",
-          "material": "Oro",
-          "peso": 0.01,
-          "valor": 1
-        }
-      ]
+      "dinero": 99,
+      "bienes": []
     },
     {
       "id": "2",
@@ -45,7 +44,7 @@
       "dinero": 99,
       "bienes": [
         {
-          "id": "1",
+          "id": "3",
           "nombre": "Corona",
           "descripcion": "Moneda de curso legal en los Reinos del Norte.",
           "material": "Oro",
@@ -60,8 +59,7 @@
       "raza": "Dios",
       "ubicacion": "Melbourne",
       "dinero": 9999,
-      "bienes": [
-      ]
+      "bienes": []
     }
   ],
   "transacciones": [
@@ -109,6 +107,14 @@
       "fecha": "2025-03-19T20:03:56.977Z",
       "bienId": "1",
       "IdPersona": "1",
+      "coronas": 1
+    },
+    {
+      "id": "7",
+      "tipo": "compra",
+      "fecha": "2025-03-19T20:05:13.774Z",
+      "bienId": "1",
+      "IdPersona": "12",
       "coronas": 1
     }
   ]
