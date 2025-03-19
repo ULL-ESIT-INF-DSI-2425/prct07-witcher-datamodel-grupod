@@ -103,11 +103,11 @@ export async function listarBienes(orden = "asc_alf") {
 }
 export async function listarMercaderes() {
     await db.read();
-    return db.data.mercaderes.map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero()));
+    return db.data.mercaderes.map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
 }
 export async function incluirMercader(mercader) {
     await db.read();
-    const nuevoMercader = new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero());
+    const nuevoMercader = new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes);
     db.data.mercaderes.push(nuevoMercader);
     await db.write();
 }
@@ -137,7 +137,7 @@ export async function buscarMercaderId(id) {
     if (!mercaderData) {
         throw new Error(`Mercader con ID ${id} no encontrado`);
     }
-    const mercader = new Mercader(mercaderData.id, mercaderData.nombre, mercaderData.tipo, mercaderData.ubicacion, mercaderData.dinero);
+    const mercader = new Mercader(mercaderData.id, mercaderData.nombre, mercaderData.tipo, mercaderData.ubicacion, mercaderData.dinero, mercaderData.bienes);
     return mercader;
 }
 export async function buscarMercaderNombre(nombre) {
@@ -146,24 +146,24 @@ export async function buscarMercaderNombre(nombre) {
     if (!mercaderData) {
         throw new Error(`Mercader con nombre ${nombre} no encontrado`);
     }
-    const mercader = new Mercader(mercaderData.id, mercaderData.nombre, mercaderData.tipo, mercaderData.ubicacion, mercaderData.dinero);
+    const mercader = new Mercader(mercaderData.id, mercaderData.nombre, mercaderData.tipo, mercaderData.ubicacion, mercaderData.dinero, mercaderData.bienes);
     return mercader;
 }
 export async function buscarMercaderTipo(tipo) {
     await db.read();
     return db.data.mercaderes
         .filter(mercader => mercader.tipo === tipo)
-        .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero()));
+        .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
 }
 export async function buscarMercaderUbicacion(ubicacion) {
     await db.read();
     return db.data.mercaderes
         .filter(mercader => mercader.ubicacion === ubicacion)
-        .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero()));
+        .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
 }
 export async function incluirCliente(cliente) {
     await db.read();
-    const nuevoCliente = new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero);
+    const nuevoCliente = new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes);
     db.data.clientes.push(nuevoCliente);
     await db.write();
 }
@@ -193,7 +193,7 @@ export async function buscarClienteId(id) {
     if (!clienteData) {
         throw new Error(`Cliente con ID ${id} no encontrado`);
     }
-    const cliente = new Cliente(clienteData.id, clienteData.nombre, clienteData.raza, clienteData.ubicacion, clienteData.dinero);
+    const cliente = new Cliente(clienteData.id, clienteData.nombre, clienteData.raza, clienteData.ubicacion, clienteData.dinero, clienteData.bienes);
     return cliente;
 }
 export async function buscarClienteNombre(nombre) {
@@ -202,22 +202,22 @@ export async function buscarClienteNombre(nombre) {
     if (!clienteData) {
         throw new Error(`Cliente con nombre ${nombre} no encontrado`);
     }
-    const cliente = new Cliente(clienteData.id, clienteData.nombre, clienteData.raza, clienteData.ubicacion, clienteData.dinero);
+    const cliente = new Cliente(clienteData.id, clienteData.nombre, clienteData.raza, clienteData.ubicacion, clienteData.dinero, clienteData.bienes);
     return cliente;
 }
 export async function buscarClienteRaza(raza) {
     await db.read();
     return db.data.clientes
         .filter(cliente => cliente.raza === raza)
-        .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero));
+        .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
 }
 export async function buscarClienteUbicacion(ubicacion) {
     await db.read();
     return db.data.clientes
         .filter(cliente => cliente.ubicacion === ubicacion)
-        .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero));
+        .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
 }
 export async function listarClientes() {
     await db.read();
-    return db.data.clientes.map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero));
+    return db.data.clientes.map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
 }

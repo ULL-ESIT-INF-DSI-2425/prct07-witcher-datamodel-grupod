@@ -1,10 +1,12 @@
 {
   "bienes": [
     {
-      "id": "1",
+      "id": "2",
       "nombre": "Corona",
-      "tipo": "Corona",
-      "precio": 1
+      "descripcion": "Moneda de curso legal en los Reinos del Norte.",
+      "material": "Oro",
+      "peso": 0.01,
+      "valor": 1
     }
   ],
   "mercaderes": [
@@ -13,14 +15,25 @@
       "nombre": "Ismael",
       "tipo": "Usurero",
       "ubicacion": "Güímar",
-      "dinero": 100
+      "dinero": 98,
+      "bienes": [
+        {
+          "id": "1",
+          "nombre": "Corona",
+          "descripcion": "Moneda de curso legal en los Reinos del Norte.",
+          "material": "Oro",
+          "peso": 0.01,
+          "valor": 1
+        }
+      ]
     },
     {
       "id": "2",
       "nombre": "Abdonetti",
       "tipo": "Usurero",
       "ubicacion": "Tejina",
-      "dinero": null
+      "dinero": 100,
+      "bienes": []
     }
   ],
   "clientes": [
@@ -29,58 +42,74 @@
       "nombre": "Dani",
       "raza": "Macaco",
       "ubicacion": "La Cuesta",
-      "dinero": null
+      "dinero": 99,
+      "bienes": [
+        {
+          "id": "1",
+          "nombre": "Corona",
+          "descripcion": "Moneda de curso legal en los Reinos del Norte.",
+          "material": "Oro",
+          "peso": 0.01,
+          "valor": 1
+        }
+      ]
     },
     {
       "id": "2",
       "nombre": "Nano",
       "raza": "Dios",
       "ubicacion": "Melbourne",
-      "dinero": 10000
+      "dinero": 9999,
+      "bienes": [
+      ]
     }
   ],
   "transacciones": [
     {
       "id": "1",
-      "fecha": "2021-05-01",
-      "bien": "1",
-      "mercader": "2",
-      "cliente": "1",
-      "cantidad": 1
+      "tipo": "venta",
+      "fecha": "2025-03-19T19:49:53.821Z",
+      "bienId": "1",
+      "IdPersona": "1"
     },
     {
       "id": "2",
-      "fecha": "2021-05-01",
-      "bien": "18",
-      "mercader": "12",
-      "cliente": "2",
-      "cantidad": 1
+      "tipo": "compra",
+      "fecha": "2025-03-19T19:59:11.759Z",
+      "bienId": "1",
+      "IdPersona": "12"
     },
     {
       "id": "3",
       "tipo": "venta",
-      "fecha": "2025-03-16T14:00:47.033Z",
+      "fecha": "2025-03-19T20:00:47.008Z",
       "bienId": "1",
-      "clienteId": "1",
-      "mercaderId": "2",
-      "coronas": 3
+      "IdPersona": "2",
+      "coronas": 1
     },
     {
       "id": "4",
-      "tipo": "venta",
-      "fecha": "2025-03-16T14:13:18.447Z",
-      "bienId": "18",
-      "clienteId": "1",
-      "mercaderId": "2",
+      "tipo": "compra",
+      "fecha": "2025-03-19T20:02:55.750Z",
+      "bienId": "1",
+      "IdPersona": "12",
       "coronas": 1
     },
     {
       "id": "5",
+      "tipo": "compra",
+      "fecha": "2025-03-19T20:03:07.549Z",
+      "bienId": "1",
+      "IdPersona": "12",
+      "coronas": 1
+    },
+    {
+      "id": "6",
       "tipo": "venta",
-      "fecha": "2025-03-16T14:27:26.433Z",
-      "bienId": "18",
-      "clienteId": "1",
-      "mercaderId": "2"
+      "fecha": "2025-03-19T20:03:56.977Z",
+      "bienId": "1",
+      "IdPersona": "1",
+      "coronas": 1
     }
   ]
 }

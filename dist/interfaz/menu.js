@@ -1,7 +1,7 @@
 import inquirer from "inquirer"; // Importa la librería inquirer para interactuar con el usuario a través de la consola
 import { initDB } from "../base_datos/database.js"; // Importa la función para inicializar la base de datos
 import { incluirBien, listarBienes, eliminarBien, modificarBien, buscarBienTipo, buscarBienPorId, buscarBienDescripcion, buscarBienNombre, incluirCliente, listarClientes, eliminarCliente, modificarCliente, buscarClienteId, buscarClienteNombre, buscarClienteRaza, buscarClienteUbicacion, incluirMercader, listarMercaderes, eliminarMercader, modificarMercader, buscarMercaderId, buscarMercaderNombre, buscarMercaderTipo, buscarMercaderUbicacion } from "../services/Inventario.js"; // Importa las funciones para añadir y listar bienes del inventario
-import { registrarVenta } from "../services/Transacciones.js"; // Importa las funciones para manejar los bienes del inventario
+import { registrarCompra, registrarVenta } from "../services/Transacciones.js"; // Importa las funciones para manejar los bienes del inventario
 import { Bien } from "../models/Bien.js"; // Importa la clase Bien que representa un bien en el inventario
 import { Mercader } from "../models/Mercader.js"; // Importa la clase Mercader que representa un mercader en el juego
 import { Cliente } from "../models/Cliente.js"; // Importa la clase Cliente que representa un cliente en el juego
@@ -9,7 +9,7 @@ async function main() {
     await initDB(); // Inicializa la base de datos
     // Pregunta al usuario qué acción desea realizar
     const respuesta = await inquirer.prompt([
-        { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar venta",
+        { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar venta", "Realizar compra",
                 "Añadir cliente", "Ver clientes", "Eliminar cliente", "Modificar cliente", "Buscar cliente",
                 "Añadir mercader", "Ver mercaderes", "Eliminar mercader", "Modificar mercader", "Buscar mercader",
                 "Añadir bien", "Eliminar bien", "Modificar bien", "Ver bienes", "Buscar bien", "Salir"] }
@@ -23,7 +23,7 @@ async function main() {
     else if (respuesta.opcion.includes("mercader")) {
         await handleMercaderes(respuesta.opcion);
     }
-    else if (respuesta.opcion === "Realizar venta") {
+    else if (respuesta.opcion === "Realizar venta" || respuesta.opcion === "Realizar compra") {
         await handleTransacciones(respuesta.opcion);
     }
     else {
@@ -160,9 +160,9 @@ async function handleMercaderes(opcion) {
             { type: "input", name: "nombre", message: "Nombre del mercader:" },
             { type: "input", name: "tipo", message: "Tipo de mercader:" },
             { type: "input", name: "ubicacion", message: "Ubicación del mercader:" },
-            { type: "number", name: "dinero", message: "Dinero del mercader:" }
+            { type: "number", name: "dinero", message: "Dinero del mercader:" },
         ]);
-        await incluirMercader(new Mercader(nuevoMercader.id, nuevoMercader.nombre, nuevoMercader.tipo, nuevoMercader.ubicacion, nuevoMercader.dinero));
+        await incluirMercader(new Mercader(nuevoMercader.id, nuevoMercader.nombre, nuevoMercader.tipo, nuevoMercader.ubicacion, nuevoMercader.dinero, []));
         console.log("Mercader agregado exitosamente.");
     }
     else if (opcion === "Ver mercaderes") {
@@ -190,7 +190,7 @@ async function handleMercaderes(opcion) {
             { type: "input", name: "ubicacion", message: "Nueva ubicación del mercader:", default: mercader.ubicacion },
             { type: "number", name: "dinero", message: "Nuevo dinero del mercader:", default: mercader.getDinero() }
         ]);
-        await modificarMercader(idMercader.id, new Mercader(idMercader.id, nuevoMercader.nombre, nuevoMercader.tipo, nuevoMercader.ubicacion, nuevoMercader.dinero));
+        await modificarMercader(idMercader.id, new Mercader(idMercader.id, nuevoMercader.nombre, nuevoMercader.tipo, nuevoMercader.ubicacion, nuevoMercader.dinero, mercader.bienes));
         console.log("Mercader modificado exitosamente.");
     }
     else if (opcion === "Buscar mercader") {
@@ -245,7 +245,7 @@ async function handleClientes(opcion) {
             { type: "input", name: "ubicacion", message: "Ubicación del cliente:" },
             { type: "number", name: "dinero", message: "Dinero del cliente:" }
         ]);
-        await incluirCliente(new Cliente(nuevoCliente.id, nuevoCliente.nombre, nuevoCliente.raza, nuevoCliente.ubicacion, nuevoCliente.dinero));
+        await incluirCliente(new Cliente(nuevoCliente.id, nuevoCliente.nombre, nuevoCliente.raza, nuevoCliente.ubicacion, nuevoCliente.dinero, []));
         console.log("Cliente agregado exitosamente.");
     }
     else if (opcion === "Ver clientes") {
@@ -273,7 +273,7 @@ async function handleClientes(opcion) {
             { type: "input", name: "ubicacion", message: "Nueva ubicación del cliente:", default: cliente.ubicacion },
             { type: "number", name: "dinero", message: "Nuevo dinero del cliente:", default: cliente.dinero }
         ]);
-        await modificarCliente(idCliente.id, new Cliente(idCliente.id, nuevoCliente.nombre, nuevoCliente.raza, nuevoCliente.ubicacion, nuevoCliente.dinero));
+        await modificarCliente(idCliente.id, new Cliente(idCliente.id, nuevoCliente.nombre, nuevoCliente.raza, nuevoCliente.ubicacion, nuevoCliente.dinero, cliente.bienes));
         console.log("Cliente modificado exitosamente.");
     }
     else if (opcion === "Buscar cliente") {
@@ -335,14 +335,20 @@ async function handleTransacciones(opcion) {
             console.log("No se encontró un cliente con ese ID.");
             return;
         }
+        await registrarVenta(bien.id, clienteInput.clienteId);
+    }
+    if (opcion === "Realizar compra") {
         const mercaderInput = await inquirer.prompt([{ type: "input", name: "mercaderId", message: "ID del mercader que vende:" }]);
         //Buscamos el mercader en la base de datos
         const mercader = await buscarMercaderId(mercaderInput.mercaderId);
-        if (!mercader) {
-            console.log("No se encontró un mercader con ese ID.");
+        const bienInput = await inquirer.prompt([{ type: "input", name: "bienId", message: "ID del bien que se compra:" }]);
+        //Buscamos el bien en la base de datos
+        const bien = mercader?.bienes.find(b => b.id === bienInput.bienId);
+        if (!bien) {
+            console.log("No se encontró un bien con ese ID.");
             return;
         }
-        await registrarVenta(bien.id, clienteInput.clienteId, mercaderInput.mercaderId);
+        await registrarCompra(bien.id, mercaderInput.mercaderId);
     }
 }
 main(); // Ejecuta la función principal

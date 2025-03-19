@@ -8,35 +8,31 @@ export class Transaccion {
   tipo: 'venta' | 'compra' | 'devolucion';
   fecha: Date;
   bienId: string;
-  clienteId?: string;
-  mercaderId?: string;
+  IdPersona?: string;
   coronas: number;
 
   constructor(
     tipo: 'venta' | 'compra' | 'devolucion',
     bienId: string,
     coronas: number,
-    clienteId?: string,
-    mercaderId?: string
+    IdPersona: string
   ) {
     this.id = (db.data.transacciones.length + 1).toString();
     this.tipo = tipo;
     this.fecha = new Date();
     this.bienId = bienId;
-    this.clienteId = clienteId;
-    this.mercaderId = mercaderId;
+    this.IdPersona = IdPersona;
     this.coronas = coronas;
   }
 }
 
-export async function registrarVenta(bienId: string, clienteId: string, mercaderId: string) {
+export async function registrarVenta(bienId: string, clienteId: string) {
   await db.read();
 
   const bien = db.data.bienes.find(b => b.id === bienId);
   const cliente = db.data.clientes.find(c => c.id === clienteId);
-  const mercader = db.data.mercaderes.find(m => m.id === mercaderId);
 
-  if (!bien || !cliente || !mercader) {
+  if (!bien || !cliente) {
     throw new Error("Bien, cliente o mercader no encontrado.");
   }
 
@@ -45,9 +41,9 @@ export async function registrarVenta(bienId: string, clienteId: string, mercader
   }
 
   cliente.dinero -= bien.valor;
-  mercader.dinero = mercader.dinero + bien.valor;
+  const transaccion = new Transaccion('venta', bienId, bien.valor, clienteId);
 
-  const transaccion = new Transaccion('venta', bienId, bien.valor, clienteId, mercaderId);
+  cliente.bienes.push(bien);
 
   db.data.transacciones.push(transaccion);
   db.data.bienes = db.data.bienes.filter(b => b.id !== bienId);
@@ -56,23 +52,30 @@ export async function registrarVenta(bienId: string, clienteId: string, mercader
   console.log(`💰 Venta realizada: ${bien.nombre} vendido a ${cliente.nombre} por ${bien.valor} coronas.`);
 }
 
-export async function registrarCompra(bien: Bien, mercaderId: string, coronas: number) {
-  /**
+export async function registrarCompra(bienId: string, mercaderId: string) {
   await db.read();
 
   const mercader = db.data.mercaderes.find(m => m.id === mercaderId);
+
   if (!mercader) {
     throw new Error("Mercader no encontrado.");
   }
 
-  const transaccion = new Transaccion('compra', bien.id, coronas, undefined, mercaderId);
+  const bien = mercader.bienes.find(b => b.id === bienId);
+  if (!bien) {
+    throw new Error("Bien no encontrado.");
+  }
+
+  mercader.dinero += bien.valor;
+  const transaccion = new Transaccion('compra', bienId, bien.valor, mercaderId);
+
+  mercader.bienes = mercader.bienes.filter(b => b.id !== bienId);
 
   db.data.transacciones.push(transaccion);
   db.data.bienes.push(bien);
   await db.write();
 
-  console.log(`📦 Compra realizada: ${bien.nombre} adquirido de ${mercader.nombre} por ${coronas} coronas.`);
-  */
+  console.log(`💰 Compra realizada: ${bien.nombre} comprado a ${mercader.nombre} por ${bien.valor} coronas.`);
 }
 
 export async function procesarDevolucion(bienId: string, origen: "cliente" | "mercader", coronas: number) {

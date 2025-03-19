@@ -135,7 +135,7 @@ export async function listarBienes(orden: string = "asc_alf"): Promise<Bien[]> {
 export async function listarMercaderes(): Promise<Mercader[]> {
   await db.read();
   return db.data.mercaderes.map(
-    mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero())
+    mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes)
   );
 }
 
@@ -146,7 +146,8 @@ export async function incluirMercader(mercader: Mercader) {
     mercader.nombre,
     mercader.tipo,
     mercader.ubicacion,
-    mercader.getDinero()
+    mercader.getDinero(),
+    mercader.bienes
   );
   db.data.mercaderes.push(nuevoMercader);
   await db.write();
@@ -185,7 +186,8 @@ export async function buscarMercaderId(id: string): Promise<Mercader> {
     mercaderData.nombre,
     mercaderData.tipo,
     mercaderData.ubicacion,
-    mercaderData.dinero
+    mercaderData.dinero,
+    mercaderData.bienes
   );
   return mercader;
 }
@@ -201,7 +203,8 @@ export async function buscarMercaderNombre(nombre: string): Promise<Mercader> {
     mercaderData.nombre,
     mercaderData.tipo,
     mercaderData.ubicacion,
-    mercaderData.dinero
+    mercaderData.dinero,
+    mercaderData.bienes
   );
   return mercader;
 }
@@ -210,14 +213,14 @@ export async function buscarMercaderTipo(tipo: string): Promise<Mercader[]> {
   await db.read();
   return db.data.mercaderes
     .filter(mercader => mercader.tipo === tipo)
-    .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero()));
+    .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
 }
 
 export async function buscarMercaderUbicacion(ubicacion: string): Promise<Mercader[]> {
   await db.read();
   return db.data.mercaderes
     .filter(mercader => mercader.ubicacion === ubicacion)
-    .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero()));
+    .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
 }
 
 export async function incluirCliente(cliente: Cliente) {
@@ -227,7 +230,8 @@ export async function incluirCliente(cliente: Cliente) {
     cliente.nombre,
     cliente.raza,
     cliente.ubicacion,
-    cliente.dinero
+    cliente.dinero,
+    cliente.bienes
   );
   db.data.clientes.push(nuevoCliente);
   await db.write();
@@ -266,7 +270,8 @@ export async function buscarClienteId(id: string): Promise<Cliente> {
     clienteData.nombre,
     clienteData.raza,
     clienteData.ubicacion,
-    clienteData.dinero
+    clienteData.dinero,
+    clienteData.bienes
   );
   return cliente;
 }
@@ -282,7 +287,8 @@ export async function buscarClienteNombre(nombre: string): Promise<Cliente> {
     clienteData.nombre,
     clienteData.raza,
     clienteData.ubicacion,
-    clienteData.dinero
+    clienteData.dinero,
+    clienteData.bienes
   );
   return cliente;
 }
@@ -291,19 +297,19 @@ export async function buscarClienteRaza(raza: string): Promise<Cliente[]> {
   await db.read();
   return db.data.clientes
     .filter(cliente => cliente.raza === raza)
-    .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero));
+    .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
 }
 
 export async function buscarClienteUbicacion(ubicacion: string): Promise<Cliente[]> {
   await db.read();
   return db.data.clientes
     .filter(cliente => cliente.ubicacion === ubicacion)
-    .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero));
+    .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
 }
 
 export async function listarClientes(): Promise<Cliente[]> {
   await db.read();
   return db.data.clientes.map(
-    cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero)
+    cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes)
   );
 }
