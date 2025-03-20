@@ -8,14 +8,16 @@ import { registrarCompra, registrarVenta, procesarDevolucion } from "../services
 import { Bien } from "../models/Bien.js"; // Importa la clase Bien que representa un bien en el inventario
 import { Mercader } from "../models/Mercader.js"; // Importa la clase Mercader que representa un mercader en el juego
 import { Cliente } from "../models/Cliente.js"; // Importa la clase Cliente que representa un cliente en el juego
-import { Transaccion } from "../services/Transacciones.js"; //
+import { Transaccion } from "../services/Transacciones.js"; // Importa la clase Transaccion que representa una transacción en el juego
+import { InformeTransacciones } from "../services/Informes.js"; // Importa la clase InformeTransacciones que representa
 
 async function main() {
   await initDB(); // Inicializa la base de datos
 
   // Pregunta al usuario qué acción desea realizar
   const respuesta = await inquirer.prompt([
-      { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar venta", "Realizar compra", "Realizar devolución de cliente", "Realizar devolución a mercader",
+      { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar informe del stock", "Informe de los bienes más vendidos",
+                                                                               "Realizar venta", "Realizar compra", "Realizar devolucion a cliente", "Realizar devolucion a mercader",
                                                                                "Añadir cliente", "Ver clientes", "Eliminar cliente", "Modificar cliente", "Buscar cliente",
                                                                                "Añadir mercader", "Ver mercaderes", "Eliminar mercader", "Modificar mercader", "Buscar mercader",
                                                                                "Añadir bien", "Eliminar bien", "Modificar bien", "Ver bienes", "Buscar bien", "Salir"] }
@@ -24,15 +26,19 @@ async function main() {
   if (respuesta.opcion.includes("bien")) {
     await handleBienes(respuesta.opcion);
   } 
+  else if (respuesta.opcion === "Realizar venta" || respuesta.opcion === "Realizar compra" || respuesta.opcion === "Realizar devolucion a cliente" || respuesta.opcion === "Realizar devolucion a mercader") {
+    await handleTransacciones(respuesta.opcion);
+  }
+  else if (respuesta.opcion.includes("informe")) {
+    await handleInformes(respuesta.opcion);
+  }
   else if (respuesta.opcion.includes("cliente")) {
     await handleClientes(respuesta.opcion);
   }
   else if (respuesta.opcion.includes("mercader")) {
     await handleMercaderes(respuesta.opcion);
   }
-  else if (respuesta.opcion === "Realizar venta" || respuesta.opcion === "Realizar compra") {
-    await handleTransacciones(respuesta.opcion);
-  }
+  
   else {
     console.log("Saliendo...");
     return;
@@ -343,8 +349,7 @@ async function handleTransacciones(opcion: string) {
     }
     await registrarVenta(bien.id, clienteInput.clienteId);
   }
-
-  if (opcion === "Realizar compra") {
+  else if (opcion === "Realizar compra") {
     const mercaderInput = await inquirer.prompt([{ type: "input", name: "mercaderId", message: "ID del mercader que vende:" }]);
     //Buscamos el mercader en la base de datos
     const mercader = await buscarMercaderId(mercaderInput.mercaderId);
@@ -357,8 +362,7 @@ async function handleTransacciones(opcion: string) {
     }
     await registrarCompra(bien.id, mercaderInput.mercaderId);
   }
-
-  if (opcion === "Realizar devolución de cliente") {
+  else if (opcion === "Realizar devolucion a cliente") {
     const clienteInput = await inquirer.prompt([{ type: "input", name: "clienteId", message: "ID del cliente que devuelve:" }]);
     //Buscamos el cliente en la base de datos
     const cliente = await buscarClienteId(clienteInput.clienteId);
@@ -373,10 +377,9 @@ async function handleTransacciones(opcion: string) {
       console.log("No se encontró un bien con ese ID.");
       return;
     }
-    await procesarDevolucion(bien.id, clienteInput.clienteId);
+    await procesarDevolucion(bien.id, clienteInput.clienteId, "venta");
   }
-  
-  if (opcion === "Realizar devolución a mercader") {
+  else if (opcion === "Realizar devolucion a mercader") {
     const mercaderInput = await inquirer.prompt([{ type: "input", name: "mercaderId", message: "ID del mercader que devuelve:" }]);
     //Buscamos el mercader en la base de datos
     const mercader = await buscarMercaderId(mercaderInput.mercaderId);
@@ -391,8 +394,16 @@ async function handleTransacciones(opcion: string) {
       console.log("No se encontró un bien con ese ID.");
       return;
     }
-    await procesarDevolucion(bien.id, mercaderInput.mercaderId);
+    await procesarDevolucion(bien.id, mercaderInput.mercaderId, "compra");
   }
+}
+
+async function handleInformes(opcion: string) {
+  if (opcion === "Realizar informe del stock") {
+    const informe = new InformeTransacciones();
+    informe.estadoStock();
+  }
+    
 }
 
 main(); // Ejecuta la función principal

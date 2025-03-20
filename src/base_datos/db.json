@@ -45,7 +45,7 @@
       "nombre": "Iris",
       "descripcion": "La espada de Olgierd von Everec, imbuida con energía mágica.",
       "material": "Acero maldito",
-      "peso": 2.0,
+      "peso": 2,
       "valor": 3000
     },
     {
@@ -61,7 +61,7 @@
       "nombre": "Guanteletes del Grifo",
       "descripcion": "Parte del set de la escuela del Grifo, mejora la magia de señales.",
       "material": "Acero reforzado",
-      "peso": 3.0,
+      "peso": 3,
       "valor": 950
     },
     {
@@ -77,7 +77,7 @@
       "nombre": "Trofeo de Quimera",
       "descripcion": "La cabeza de una feroz Quimera, usada como trofeo de caza.",
       "material": "Órganos de monstruo",
-      "peso": 5.0,
+      "peso": 5,
       "valor": 1800
     },
     {
@@ -145,19 +145,11 @@
       "valor": 350
     },
     {
-      "id": "19",
-      "nombre": "Flor de Mandrágora",
-      "descripcion": "Ingrediente raro usado en pociones de alto nivel.",
-      "material": "Planta",
-      "peso": 0.2,
-      "valor": 500
-    },
-    {
       "id": "20",
       "nombre": "Máscara de Uroboros",
       "descripcion": "Una máscara mística utilizada en rituales antiguos.",
       "material": "Madera encantada",
-      "peso": 1.0,
+      "peso": 1,
       "valor": 2500
     },
     {
@@ -229,21 +221,21 @@
       "nombre": "Cráneo de Beann'shie",
       "descripcion": "Restos de una criatura espectral con gran energía mágica.",
       "material": "Hueso encantado",
-      "peso": 3.0,
+      "peso": 3,
       "valor": 3200
     },
     {
-      "id": "30",
-      "nombre": "Polvo de Vampiro Superior",
-      "descripcion": "Restos de un vampiro antiguo, usados en alquimia.",
-      "material": "Ceniza mágica",
-      "peso": 0.8,
-      "valor": 1800
+      "id": "19",
+      "nombre": "Flor de Mandrágora",
+      "descripcion": "Ingrediente raro usado en pociones de alto nivel.",
+      "material": "Planta",
+      "peso": 0.2,
+      "valor": 500
     }
   ],
   "mercaderes": [
     {
-      "id": "12",
+      "id": "1",
       "nombre": "Ismael",
       "tipo": "Usurero",
       "ubicacion": "Güímar",
@@ -257,6 +249,206 @@
       "ubicacion": "Tejina",
       "dinero": 100,
       "bienes": []
+    },
+    {
+      "id": "3",
+      "nombre": "Éibhear Hattori",
+      "tipo": "Forjador de espadas",
+      "ubicacion": "Novigrado",
+      "dinero": 5000,
+      "bienes": [
+        {
+          "id": "101",
+          "nombre": "Espada de Acero de la Víbora",
+          "descripcion": "Una espada forjada con un veneno letal en su filo.",
+          "material": "Acero venenoso",
+          "peso": 2.3,
+          "valor": 2200
+        },
+        {
+          "id": "102",
+          "nombre": "Espada de Plata de la Mantícora",
+          "descripcion": "Forjada con plata pura, ideal contra monstruos peligrosos.",
+          "material": "Plata reforzada",
+          "peso": 2,
+          "valor": 3400
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nombre": "Marcus T. K. Hodgson",
+      "tipo": "Vendedor de libros",
+      "ubicacion": "Novigrado",
+      "dinero": 800,
+      "bienes": [
+        {
+          "id": "103",
+          "nombre": "Crónicas de los Reinos del Norte",
+          "descripcion": "Un detallado relato sobre los conflictos en Temeria, Redania y Kaedwen.",
+          "material": "Papel",
+          "peso": 0.7,
+          "valor": 250
+        },
+        {
+          "id": "104",
+          "nombre": "El Arte de la Espada de Brujo",
+          "descripcion": "Manual de combate escrito por un antiguo maestro brujo.",
+          "material": "Pergamino encuadernado",
+          "peso": 0.6,
+          "valor": 300
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "nombre": "Ibrahim Savi",
+      "tipo": "Mercader de reliquias",
+      "ubicacion": "Toussaint",
+      "dinero": 3000,
+      "bienes": [
+        {
+          "id": "105",
+          "nombre": "Fragmento de la Llama Eterna",
+          "descripcion": "Resto de una poderosa reliquia de la fe del Fuego Eterno.",
+          "material": "Cristal místico",
+          "peso": 0.5,
+          "valor": 4000
+        },
+        {
+          "id": "106",
+          "nombre": "Amuleto de la Dama del Lago",
+          "descripcion": "Un talismán encantado otorgado a los elegidos por la Dama.",
+          "material": "Oro y zafiro",
+          "peso": 0.8,
+          "valor": 5000
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "nombre": "Ealdorman Bolko",
+      "tipo": "Herbolario",
+      "ubicacion": "Velen",
+      "dinero": 1500,
+      "bienes": [
+        {
+          "id": "107",
+          "nombre": "Esencia de Dracoliz",
+          "descripcion": "Un ingrediente exótico extraído de un Dracoliz.",
+          "material": "Extracto alquímico",
+          "peso": 0.3,
+          "valor": 700
+        },
+        {
+          "id": "108",
+          "nombre": "Raíz de Endriago",
+          "descripcion": "Rara raíz usada en la preparación de pociones de resistencia.",
+          "material": "Planta",
+          "peso": 0.4,
+          "valor": 450
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "nombre": "Schmidt el Pícaro",
+      "tipo": "Vendedor ambulante",
+      "ubicacion": "Oxenfurt",
+      "dinero": 1200,
+      "bienes": [
+        {
+          "id": "109",
+          "nombre": "Llave de la Cripta de Rissberg",
+          "descripcion": "Llave antigua que abre una misteriosa cripta en Rissberg.",
+          "material": "Hierro forjado",
+          "peso": 0.2,
+          "valor": 1200
+        },
+        {
+          "id": "110",
+          "nombre": "Mapa de Tesoros Nilfgaardianos",
+          "descripcion": "Un mapa detallado que señala lugares con tesoros nilfgaardianos ocultos.",
+          "material": "Pergamino",
+          "peso": 0.3,
+          "valor": 1000
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "nombre": "Bruno Calvo",
+      "tipo": "Mercader de armaduras",
+      "ubicacion": "Beauclair",
+      "dinero": 4500,
+      "bienes": [
+        {
+          "id": "111",
+          "nombre": "Armadura de la Orden de la Rosa Ardiente",
+          "descripcion": "Una armadura ceremonial usada por caballeros fanáticos de la Orden.",
+          "material": "Acero templado",
+          "peso": 25,
+          "valor": 4200
+        },
+        {
+          "id": "112",
+          "nombre": "Botas de la Escuela del Oso",
+          "descripcion": "Parte del set de la escuela del Oso, muy resistente.",
+          "material": "Cuero reforzado",
+          "peso": 3.5,
+          "valor": 950
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "nombre": "Otto Bamber",
+      "tipo": "Herbolario",
+      "ubicacion": "Hierbaroja",
+      "dinero": 2000,
+      "bienes": [
+        {
+          "id": "113",
+          "nombre": "Polvo de Endriago",
+          "descripcion": "Ingrediente alquímico obtenido de un Endriago.",
+          "material": "Órgano de monstruo",
+          "peso": 0.6,
+          "valor": 550
+        },
+        {
+          "id": "114",
+          "nombre": "Veneno de Arachas",
+          "descripcion": "Veneno potente extraído de un Arachas, usado en pociones letales.",
+          "material": "Líquido alquímico",
+          "peso": 0.5,
+          "valor": 700
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "nombre": "Ramis el Esquivo",
+      "tipo": "Mercader de objetos raros",
+      "ubicacion": "Novigrado",
+      "dinero": 6000,
+      "bienes": [
+        {
+          "id": "115",
+          "nombre": "Gema del Destino",
+          "descripcion": "Una joya misteriosa que parece brillar con un poder oculto.",
+          "material": "Cristal encantado",
+          "peso": 1.2,
+          "valor": 3500
+        },
+        {
+          "id": "116",
+          "nombre": "Pluma de Grifo",
+          "descripcion": "Un objeto valioso y raro, usado en encantamientos poderosos.",
+          "material": "Pluma mágica",
+          "peso": 0.4,
+          "valor": 1700
+        }
+      ]
     }
   ],
   "clientes": [
@@ -265,7 +457,7 @@
       "nombre": "Dani",
       "raza": "Macaco",
       "ubicacion": "La Cuesta",
-      "dinero": 99,
+      "dinero": 9999,
       "bienes": [
         {
           "id": "3",
@@ -284,6 +476,106 @@
       "ubicacion": "Melbourne",
       "dinero": 9999,
       "bienes": []
+    },
+    {
+      "id": "3",
+      "nombre": "Geralt de Rivia",
+      "raza": "Brujo",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 5000,
+      "bienes": [
+        {
+          "id": "4",
+          "nombre": "Espada de Plata",
+          "descripcion": "Espada forjada para la caza de monstruos, especialmente útil contra criaturas mágicas.",
+          "material": "Plata",
+          "peso": 2.5,
+          "valor": 3500
+        },
+        {
+          "id": "5",
+          "nombre": "Aceite de Espectros",
+          "descripcion": "Aceite utilizado para aumentar el daño contra espectros.",
+          "material": "Ingrediente alquímico",
+          "peso": 0.2,
+          "valor": 100
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nombre": "Yennefer de Vengerberg",
+      "raza": "Hechicera",
+      "ubicacion": "Vizima",
+      "dinero": 7000,
+      "bienes": [
+        {
+          "id": "6",
+          "nombre": "Cáliz de Yennefer",
+          "descripcion": "Un cáliz encantado, con propiedades mágicas que amplifican el poder de las hechiceras.",
+          "material": "Plata y cristal",
+          "peso": 0.5,
+          "valor": 5000
+        },
+        {
+          "id": "7",
+          "nombre": "Vial de Magia Negra",
+          "descripcion": "Un frasco con el residuo de un hechizo prohibido.",
+          "material": "Cristal oscuro",
+          "peso": 0.3,
+          "valor": 1500
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "nombre": "Triss Merigold",
+      "raza": "Hechicera",
+      "ubicacion": "Oxenfurt",
+      "dinero": 4000,
+      "bienes": [
+        {
+          "id": "8",
+          "nombre": "Amuleto de la Hechicera",
+          "descripcion": "Un amuleto que protege a su portador de hechizos malignos.",
+          "material": "Oro y esmeraldas",
+          "peso": 0.1,
+          "valor": 2500
+        },
+        {
+          "id": "9",
+          "nombre": "Poción de Inmunidad al Fuego",
+          "descripcion": "Una poción que otorga inmunidad temporal al fuego.",
+          "material": "Ingrediente alquímico",
+          "peso": 0.2,
+          "valor": 600
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "nombre": "Dandelion (Jaskier)",
+      "raza": "Humano",
+      "ubicacion": "Novigrado",
+      "dinero": 2000,
+      "bienes": [
+        {
+          "id": "10",
+          "nombre": "Lira de Dandelion",
+          "descripcion": "La famosa lira del bardo, que siempre acompaña sus canciones.",
+          "material": "Madera de roble",
+          "peso": 1.5,
+          "valor": 1200
+        },
+        {
+          "id": "11",
+          "nombre": "Poema de Geralt",
+          "descripcion": "Un poema dedicado al brujo Geralt, conocido por ser la inspiración de muchos versos.",
+          "material": "Papel antiguo",
+          "peso": 0.1,
+          "valor": 500
+        }
+      ]
     }
   ],
   "transacciones": [
@@ -340,6 +632,30 @@
       "bienId": "1",
       "IdPersona": "12",
       "coronas": 1
+    },
+    {
+      "id": "8",
+      "tipo": "venta",
+      "fecha": "2025-03-20T10:21:50.916Z",
+      "bienId": "19",
+      "IdPersona": "1",
+      "coronas": 500
+    },
+    {
+      "id": "9",
+      "tipo": "devolucion",
+      "fecha": "2025-03-20T10:39:35.543Z",
+      "bienId": "30",
+      "IdPersona": "10",
+      "coronas": 1800
+    },
+    {
+      "id": "10",
+      "tipo": "devolucion",
+      "fecha": "2025-03-20T10:47:05.370Z",
+      "bienId": "19",
+      "IdPersona": "1",
+      "coronas": 500
     }
   ]
 }

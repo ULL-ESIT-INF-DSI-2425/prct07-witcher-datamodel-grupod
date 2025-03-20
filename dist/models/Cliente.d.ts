@@ -1,4 +1,4 @@
-import { Bien } from './Bien.js';
+import { Bien } from "./Bien.js";
 export declare class Cliente {
     id: string;
     nombre: string;
@@ -8,4 +8,5 @@ export declare class Cliente {
     bienes: Bien[];
     constructor(id: string, nombre: string, raza: string, ubicacion: string, dinero: number, bienes: Bien[]);
     mostrarInfo(): string;
+    static fromObject(clienteData: any): Cliente;
 }

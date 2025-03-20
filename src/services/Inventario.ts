@@ -8,15 +8,8 @@ import { Cliente } from "../models/Cliente.js";
  */
 export async function incluirBien(bien: Bien) {
   await db.read();
-  // Asegurar que el bien sea una instancia de Bien antes de guardarlo
-  const nuevoBien = new Bien(
-    bien.id,
-    bien.nombre,
-    bien.descripcion,
-    bien.material,
-    bien.peso,
-    bien.valor
-  );
+  // Asegurarse de que el bien sea una instancia de Bien antes de guardarlo
+  const nuevoBien = Bien.fromObject(bien);  // Usamos el método fromObject
   db.data.bienes.push(nuevoBien);
   await db.write();
 }
@@ -42,7 +35,7 @@ export async function modificarBien(id: string, nuevoBien: Bien) {
   await db.read();
   const index = db.data.bienes.findIndex(bien => bien.id === id);
   if (index !== -1) {
-    db.data.bienes[index] = nuevoBien;
+    db.data.bienes[index] = Bien.fromObject(nuevoBien); // Usamos el método fromObject
     await db.write();
     return true;
   }
@@ -58,15 +51,7 @@ export async function buscarBienNombre(nombre: string): Promise<Bien> {
   if (!bienData) {
     throw new Error(`Bien con nombre ${nombre} no encontrado`);
   }
-  const bien = new Bien(
-    bienData.id,
-    bienData.nombre,
-    bienData.descripcion,
-    bienData.material,
-    bienData.peso,
-    bienData.valor
-  );
-  return bien;
+  return Bien.fromObject(bienData); // Usamos el método fromObject
 }
 
 /**
@@ -76,7 +61,7 @@ export async function buscarBienTipo(material: string): Promise<Bien[]> {
   await db.read();
   return db.data.bienes
     .filter(bien => bien.material === material)
-    .map(bien => new Bien(bien.id, bien.nombre, bien.descripcion, bien.material, bien.peso, bien.valor));
+    .map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
 }
 
 /**
@@ -86,7 +71,7 @@ export async function buscarBienDescripcion(descripcion: string): Promise<Bien[]
   await db.read();
   return db.data.bienes
     .filter(bien => bien.descripcion === descripcion)
-    .map(bien => new Bien(bien.id, bien.nombre, bien.descripcion, bien.material, bien.peso, bien.valor));
+    .map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
 }
 
 /**
@@ -99,15 +84,7 @@ export async function buscarBienPorId(id: string): Promise<Bien> {
   if (!bienData) {
     throw new Error(`Bien con ID ${id} no encontrado`);
   }
-  const bien = new Bien(
-    bienData.id,
-    bienData.nombre,
-    bienData.descripcion,
-    bienData.material,
-    bienData.peso,
-    bienData.valor
-  );
-  return bien;
+  return Bien.fromObject(bienData); // Usamos el método fromObject
 }
 
 /**
@@ -116,7 +93,7 @@ export async function buscarBienPorId(id: string): Promise<Bien> {
 export async function listarBienes(orden: string = "asc_alf"): Promise<Bien[]> {
   await db.read();
   let bienes = db.data.bienes.map(
-    bien => new Bien(bien.id, bien.nombre, bien.descripcion, bien.material, bien.peso, bien.valor)
+    bien => Bien.fromObject(bien) // Usamos el método fromObject
   );
 
   if (orden === "asc_alf") {
@@ -135,20 +112,13 @@ export async function listarBienes(orden: string = "asc_alf"): Promise<Bien[]> {
 export async function listarMercaderes(): Promise<Mercader[]> {
   await db.read();
   return db.data.mercaderes.map(
-    mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes)
+    mercader => Mercader.fromObject(mercader) // Usamos el método fromObject
   );
 }
 
 export async function incluirMercader(mercader: Mercader) {
   await db.read();
-  const nuevoMercader = new Mercader(
-    mercader.id,
-    mercader.nombre,
-    mercader.tipo,
-    mercader.ubicacion,
-    mercader.getDinero(),
-    mercader.bienes
-  );
+  const nuevoMercader = Mercader.fromObject(mercader); // Usamos el método fromObject
   db.data.mercaderes.push(nuevoMercader);
   await db.write();
 }
@@ -168,7 +138,7 @@ export async function modificarMercader(id: string, nuevoMercader: Mercader) {
   await db.read();
   const index = db.data.mercaderes.findIndex(mercader => mercader.id === id);
   if (index !== -1) {
-    db.data.mercaderes[index] = nuevoMercader;
+    db.data.mercaderes[index] = Mercader.fromObject(nuevoMercader); // Usamos el método fromObject
     await db.write();
     return true;
   }
@@ -181,15 +151,7 @@ export async function buscarMercaderId(id: string): Promise<Mercader> {
   if (!mercaderData) {
     throw new Error(`Mercader con ID ${id} no encontrado`);
   }
-  const mercader = new Mercader(
-    mercaderData.id,
-    mercaderData.nombre,
-    mercaderData.tipo,
-    mercaderData.ubicacion,
-    mercaderData.dinero,
-    mercaderData.bienes
-  );
-  return mercader;
+  return Mercader.fromObject(mercaderData); // Usamos el método fromObject
 }
 
 export async function buscarMercaderNombre(nombre: string): Promise<Mercader> {
@@ -198,41 +160,26 @@ export async function buscarMercaderNombre(nombre: string): Promise<Mercader> {
   if (!mercaderData) {
     throw new Error(`Mercader con nombre ${nombre} no encontrado`);
   }
-  const mercader = new Mercader(
-    mercaderData.id,
-    mercaderData.nombre,
-    mercaderData.tipo,
-    mercaderData.ubicacion,
-    mercaderData.dinero,
-    mercaderData.bienes
-  );
-  return mercader;
+  return Mercader.fromObject(mercaderData); // Usamos el método fromObject
 }
 
 export async function buscarMercaderTipo(tipo: string): Promise<Mercader[]> {
   await db.read();
   return db.data.mercaderes
     .filter(mercader => mercader.tipo === tipo)
-    .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
+    .map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 
 export async function buscarMercaderUbicacion(ubicacion: string): Promise<Mercader[]> {
   await db.read();
   return db.data.mercaderes
     .filter(mercader => mercader.ubicacion === ubicacion)
-    .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
+    .map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 
 export async function incluirCliente(cliente: Cliente) {
   await db.read();
-  const nuevoCliente = new Cliente(
-    cliente.id,
-    cliente.nombre,
-    cliente.raza,
-    cliente.ubicacion,
-    cliente.dinero,
-    cliente.bienes
-  );
+  const nuevoCliente = Cliente.fromObject(cliente); // Usamos el método fromObject
   db.data.clientes.push(nuevoCliente);
   await db.write();
 }
@@ -252,7 +199,7 @@ export async function modificarCliente(id: string, nuevoCliente: Cliente) {
   await db.read();
   const index = db.data.clientes.findIndex(cliente => cliente.id === id);
   if (index !== -1) {
-    db.data.clientes[index] = nuevoCliente;
+    db.data.clientes[index] = Cliente.fromObject(nuevoCliente); // Usamos el método fromObject
     await db.write();
     return true;
   }
@@ -265,15 +212,7 @@ export async function buscarClienteId(id: string): Promise<Cliente> {
   if (!clienteData) {
     throw new Error(`Cliente con ID ${id} no encontrado`);
   }
-  const cliente = new Cliente(
-    clienteData.id,
-    clienteData.nombre,
-    clienteData.raza,
-    clienteData.ubicacion,
-    clienteData.dinero,
-    clienteData.bienes
-  );
-  return cliente;
+  return Cliente.fromObject(clienteData); // Usamos el método fromObject
 }
 
 export async function buscarClienteNombre(nombre: string): Promise<Cliente> {
@@ -282,34 +221,24 @@ export async function buscarClienteNombre(nombre: string): Promise<Cliente> {
   if (!clienteData) {
     throw new Error(`Cliente con nombre ${nombre} no encontrado`);
   }
-  const cliente = new Cliente(
-    clienteData.id,
-    clienteData.nombre,
-    clienteData.raza,
-    clienteData.ubicacion,
-    clienteData.dinero,
-    clienteData.bienes
-  );
-  return cliente;
+  return Cliente.fromObject(clienteData); // Usamos el método fromObject
 }
 
 export async function buscarClienteRaza(raza: string): Promise<Cliente[]> {
   await db.read();
   return db.data.clientes
     .filter(cliente => cliente.raza === raza)
-    .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
+    .map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }
 
 export async function buscarClienteUbicacion(ubicacion: string): Promise<Cliente[]> {
   await db.read();
   return db.data.clientes
     .filter(cliente => cliente.ubicacion === ubicacion)
-    .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
+    .map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }
 
 export async function listarClientes(): Promise<Cliente[]> {
   await db.read();
-  return db.data.clientes.map(
-    cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes)
-  );
+  return db.data.clientes.map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }

@@ -1,5 +1,4 @@
-import { Bien } from './Bien.js';
-
+import { Bien } from "./Bien.js";
 export class Mercader {
   constructor(
     public id: string,
@@ -7,19 +6,27 @@ export class Mercader {
     public tipo: string,
     public ubicacion: string,
     public dinero: number,
-    public bienes: Bien[],
+    public bienes: Bien[]
   ) {}
 
   mostrarInfo(): string {
-    return `${this.nombre} (${this.tipo}) - Ubicación: ${this.ubicacion} - Bienes: ${this.bienes}`;
+    const bienesInfo = this.bienes.map(bien => bien.toString()).join(", ");
+    return `${this.nombre} (${this.tipo}) - Ubicación: ${this.ubicacion} - Bienes: [${bienesInfo}]`;
+  }
+  getDinero() : number {
+    return this.dinero
   }
 
-  getDinero(): number {
-    return this.dinero;
-  }
-
-  setDinero(dinero: number): void {
-    this.dinero = dinero;
+  static fromObject(mercaderData: any): Mercader {
+    return new Mercader(
+      mercaderData.id,
+      mercaderData.nombre,
+      mercaderData.tipo,
+      mercaderData.ubicacion,
+      mercaderData.dinero,
+      mercaderData.bienes.map((bien: any) => Bien.fromObject(bien)) // Usamos fromObject para los bienes
+    );
   }
 }
+
 

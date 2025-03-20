@@ -9,4 +9,4 @@ export declare class Transaccion {
 }
 export declare function registrarVenta(bienId: string, clienteId: string): Promise<void>;
 export declare function registrarCompra(bienId: string, mercaderId: string): Promise<void>;
-export declare function procesarDevolucion(bienId: string, origen: "cliente" | "mercader", coronas: number): Promise<void>;
+export declare function procesarDevolucion(bienId: string, IdPersona: string, tipo: 'venta' | 'compra'): Promise<void>;

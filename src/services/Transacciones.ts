@@ -33,11 +33,13 @@ export async function registrarVenta(bienId: string, clienteId: string) {
   const cliente = db.data.clientes.find(c => c.id === clienteId);
 
   if (!bien || !cliente) {
-    throw new Error("Bien, cliente o mercader no encontrado.");
+    console.log("Bien, cliente o mercader no encontrado.");
+    return;
   }
 
   if (cliente.dinero < bien.valor) {
-    throw new Error("El cliente no tiene suficientes coronas.");
+    console.log("El cliente no tiene suficientes coronas.");
+    return;
   }
 
   cliente.dinero -= bien.valor;
@@ -49,7 +51,7 @@ export async function registrarVenta(bienId: string, clienteId: string) {
   db.data.bienes = db.data.bienes.filter(b => b.id !== bienId);
   await db.write();
 
-  console.log(`💰 Venta realizada: ${bien.nombre} vendido a ${cliente.nombre} por ${bien.valor} coronas.`);
+  console.log(`🪙​ Se ha realizado una venta: ${bien.nombre} vendido a ${cliente.nombre} por ${bien.valor} coronas.🪙​`);
 }
 
 export async function registrarCompra(bienId: string, mercaderId: string) {
@@ -58,12 +60,14 @@ export async function registrarCompra(bienId: string, mercaderId: string) {
   const mercader = db.data.mercaderes.find(m => m.id === mercaderId);
 
   if (!mercader) {
-    throw new Error("Mercader no encontrado.");
+    console.log("Mercader no encontrado.");
+    return;
   }
 
   const bien = mercader.bienes.find(b => b.id === bienId);
   if (!bien) {
-    throw new Error("Bien no encontrado.");
+    console.log("Bien no encontrado.");
+    return;
   }
 
   mercader.dinero += bien.valor;
@@ -75,7 +79,7 @@ export async function registrarCompra(bienId: string, mercaderId: string) {
   db.data.bienes.push(bien);
   await db.write();
 
-  console.log(`💰 Compra realizada: ${bien.nombre} comprado a ${mercader.nombre} por ${bien.valor} coronas.`);
+  console.log(`🪙​ Se ha realizado una compra: ${bien.nombre} comprado a ${mercader.nombre} por ${bien.valor} coronas.🪙​`);
 }
 
 export async function procesarDevolucion(bienId: string, IdPersona: string, tipo: 'venta' | 'compra') {
@@ -84,12 +88,14 @@ export async function procesarDevolucion(bienId: string, IdPersona: string, tipo
 
     const cliente = db.data.clientes.find(c => c.id === IdPersona);
     if (!cliente) {
-      throw new Error("Cliente no encontrado.");
+      console.log("Cliente no encontrado.");
+      return;
     }
 
     const bien = cliente.bienes.find(b => b.id === bienId);
     if (!bien) {
-      throw new Error("Bien no encontrado.");
+      console.log("Bien no encontrado.");
+      return;
     }
 
     cliente.dinero += bien.valor;
@@ -100,19 +106,21 @@ export async function procesarDevolucion(bienId: string, IdPersona: string, tipo
     db.data.bienes.push(bien);
     db.data.transacciones.push(transaccion);
     await db.write();
-    console.log(`💰 Devolución procesada: ${bien.nombre} devuelto por ${cliente.nombre} insatisfech@ por ${bien.valor} coronas.`);
+    console.log(`🪙​ Se ha realizado una devolución: ${bien.nombre} devuelto por ${cliente.nombre} insatisfech@ por ${bien.valor} coronas.🪙​`);
   }
   else if (tipo === 'compra') {
     await db.read();
 
     const mercader = db.data.mercaderes.find(m => m.id === IdPersona);
     if (!mercader) {
-      throw new Error("Mercader no encontrado.");
+      console.log("Mercader no encontrado.");
+      return;
     }
 
     const bien = db.data.bienes.find(b => b.id === bienId);
     if (!bien) {
-      throw new Error("Bien no encontrado.");
+      console.log("Bien no encontrado.");
+      return;
     }
 
     mercader.dinero -= bien.valor;
@@ -123,6 +131,6 @@ export async function procesarDevolucion(bienId: string, IdPersona: string, tipo
     
     db.data.transacciones.push(transaccion);
     await db.write();
-    console.log(`💰 Devolución procesada: ${bien.nombre} devuelto por ${mercader.nombre} defectuos@ por ${bien.valor} coronas.`);
+    console.log(`🪙​ Se ha realizado una devolución: ${bien.nombre} defectuos@ devuelto ${mercader.nombre} por ${bien.valor} coronas.🪙​`);
   }
 }

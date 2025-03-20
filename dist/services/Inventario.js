@@ -7,8 +7,8 @@ import { Cliente } from "../models/Cliente.js";
  */
 export async function incluirBien(bien) {
     await db.read();
-    // Asegurar que el bien sea una instancia de Bien antes de guardarlo
-    const nuevoBien = new Bien(bien.id, bien.nombre, bien.descripcion, bien.material, bien.peso, bien.valor);
+    // Asegurarse de que el bien sea una instancia de Bien antes de guardarlo
+    const nuevoBien = Bien.fromObject(bien); // Usamos el método fromObject
     db.data.bienes.push(nuevoBien);
     await db.write();
 }
@@ -32,7 +32,7 @@ export async function modificarBien(id, nuevoBien) {
     await db.read();
     const index = db.data.bienes.findIndex(bien => bien.id === id);
     if (index !== -1) {
-        db.data.bienes[index] = nuevoBien;
+        db.data.bienes[index] = Bien.fromObject(nuevoBien); // Usamos el método fromObject
         await db.write();
         return true;
     }
@@ -47,8 +47,7 @@ export async function buscarBienNombre(nombre) {
     if (!bienData) {
         throw new Error(`Bien con nombre ${nombre} no encontrado`);
     }
-    const bien = new Bien(bienData.id, bienData.nombre, bienData.descripcion, bienData.material, bienData.peso, bienData.valor);
-    return bien;
+    return Bien.fromObject(bienData); // Usamos el método fromObject
 }
 /**
  * Busca un bien por su material.
@@ -57,7 +56,7 @@ export async function buscarBienTipo(material) {
     await db.read();
     return db.data.bienes
         .filter(bien => bien.material === material)
-        .map(bien => new Bien(bien.id, bien.nombre, bien.descripcion, bien.material, bien.peso, bien.valor));
+        .map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
 }
 /**
  * Busca un bien por su descripción.
@@ -66,7 +65,7 @@ export async function buscarBienDescripcion(descripcion) {
     await db.read();
     return db.data.bienes
         .filter(bien => bien.descripcion === descripcion)
-        .map(bien => new Bien(bien.id, bien.nombre, bien.descripcion, bien.material, bien.peso, bien.valor));
+        .map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
 }
 /**
  * Busca un bien por su ID.
@@ -78,15 +77,15 @@ export async function buscarBienPorId(id) {
     if (!bienData) {
         throw new Error(`Bien con ID ${id} no encontrado`);
     }
-    const bien = new Bien(bienData.id, bienData.nombre, bienData.descripcion, bienData.material, bienData.peso, bienData.valor);
-    return bien;
+    return Bien.fromObject(bienData); // Usamos el método fromObject
 }
 /**
  * Obtiene todos los bienes del inventario.
  */
 export async function listarBienes(orden = "asc_alf") {
     await db.read();
-    let bienes = db.data.bienes.map(bien => new Bien(bien.id, bien.nombre, bien.descripcion, bien.material, bien.peso, bien.valor));
+    let bienes = db.data.bienes.map(bien => Bien.fromObject(bien) // Usamos el método fromObject
+    );
     if (orden === "asc_alf") {
         bienes.sort((a, b) => a.nombre.localeCompare(b.nombre));
     }
@@ -103,11 +102,12 @@ export async function listarBienes(orden = "asc_alf") {
 }
 export async function listarMercaderes() {
     await db.read();
-    return db.data.mercaderes.map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
+    return db.data.mercaderes.map(mercader => Mercader.fromObject(mercader) // Usamos el método fromObject
+    );
 }
 export async function incluirMercader(mercader) {
     await db.read();
-    const nuevoMercader = new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes);
+    const nuevoMercader = Mercader.fromObject(mercader); // Usamos el método fromObject
     db.data.mercaderes.push(nuevoMercader);
     await db.write();
 }
@@ -125,7 +125,7 @@ export async function modificarMercader(id, nuevoMercader) {
     await db.read();
     const index = db.data.mercaderes.findIndex(mercader => mercader.id === id);
     if (index !== -1) {
-        db.data.mercaderes[index] = nuevoMercader;
+        db.data.mercaderes[index] = Mercader.fromObject(nuevoMercader); // Usamos el método fromObject
         await db.write();
         return true;
     }
@@ -137,8 +137,7 @@ export async function buscarMercaderId(id) {
     if (!mercaderData) {
         throw new Error(`Mercader con ID ${id} no encontrado`);
     }
-    const mercader = new Mercader(mercaderData.id, mercaderData.nombre, mercaderData.tipo, mercaderData.ubicacion, mercaderData.dinero, mercaderData.bienes);
-    return mercader;
+    return Mercader.fromObject(mercaderData); // Usamos el método fromObject
 }
 export async function buscarMercaderNombre(nombre) {
     await db.read();
@@ -146,24 +145,23 @@ export async function buscarMercaderNombre(nombre) {
     if (!mercaderData) {
         throw new Error(`Mercader con nombre ${nombre} no encontrado`);
     }
-    const mercader = new Mercader(mercaderData.id, mercaderData.nombre, mercaderData.tipo, mercaderData.ubicacion, mercaderData.dinero, mercaderData.bienes);
-    return mercader;
+    return Mercader.fromObject(mercaderData); // Usamos el método fromObject
 }
 export async function buscarMercaderTipo(tipo) {
     await db.read();
     return db.data.mercaderes
         .filter(mercader => mercader.tipo === tipo)
-        .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
+        .map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 export async function buscarMercaderUbicacion(ubicacion) {
     await db.read();
     return db.data.mercaderes
         .filter(mercader => mercader.ubicacion === ubicacion)
-        .map(mercader => new Mercader(mercader.id, mercader.nombre, mercader.tipo, mercader.ubicacion, mercader.getDinero(), mercader.bienes));
+        .map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 export async function incluirCliente(cliente) {
     await db.read();
-    const nuevoCliente = new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes);
+    const nuevoCliente = Cliente.fromObject(cliente); // Usamos el método fromObject
     db.data.clientes.push(nuevoCliente);
     await db.write();
 }
@@ -181,7 +179,7 @@ export async function modificarCliente(id, nuevoCliente) {
     await db.read();
     const index = db.data.clientes.findIndex(cliente => cliente.id === id);
     if (index !== -1) {
-        db.data.clientes[index] = nuevoCliente;
+        db.data.clientes[index] = Cliente.fromObject(nuevoCliente); // Usamos el método fromObject
         await db.write();
         return true;
     }
@@ -193,8 +191,7 @@ export async function buscarClienteId(id) {
     if (!clienteData) {
         throw new Error(`Cliente con ID ${id} no encontrado`);
     }
-    const cliente = new Cliente(clienteData.id, clienteData.nombre, clienteData.raza, clienteData.ubicacion, clienteData.dinero, clienteData.bienes);
-    return cliente;
+    return Cliente.fromObject(clienteData); // Usamos el método fromObject
 }
 export async function buscarClienteNombre(nombre) {
     await db.read();
@@ -202,22 +199,21 @@ export async function buscarClienteNombre(nombre) {
     if (!clienteData) {
         throw new Error(`Cliente con nombre ${nombre} no encontrado`);
     }
-    const cliente = new Cliente(clienteData.id, clienteData.nombre, clienteData.raza, clienteData.ubicacion, clienteData.dinero, clienteData.bienes);
-    return cliente;
+    return Cliente.fromObject(clienteData); // Usamos el método fromObject
 }
 export async function buscarClienteRaza(raza) {
     await db.read();
     return db.data.clientes
         .filter(cliente => cliente.raza === raza)
-        .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
+        .map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }
 export async function buscarClienteUbicacion(ubicacion) {
     await db.read();
     return db.data.clientes
         .filter(cliente => cliente.ubicacion === ubicacion)
-        .map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
+        .map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }
 export async function listarClientes() {
     await db.read();
-    return db.data.clientes.map(cliente => new Cliente(cliente.id, cliente.nombre, cliente.raza, cliente.ubicacion, cliente.dinero, cliente.bienes));
+    return db.data.clientes.map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }
