@@ -20,13 +20,7 @@ import { registrarVenta, registrarCompra, procesarDevolucion } from '../src/serv
 //Tests
 
 //Base de datos
-
-
-
-
-
-
-
+ 
 //Bien.ts
 describe('Bien', () => {
   test('debería mostrar la información de un bien', () => {
@@ -71,4 +65,7 @@ describe('Bien', () => {
   });
 });
 
+
+
 //Cliente.ts
+
