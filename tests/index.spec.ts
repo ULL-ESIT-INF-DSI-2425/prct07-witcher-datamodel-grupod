@@ -1,5 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
+//INFORMES NO ESTA TERMINADO
 
 //Base de datos con test correctos
 // import { db } from ;
@@ -17,6 +18,10 @@ import { incluirBien, eliminarBien, modificarBien, buscarBienNombre, buscarBienT
 import { registrarVenta, registrarCompra, procesarDevolucion } from '../src/services/Transacciones';
 
 //Tests
+
+
+
+
 //Bien.ts
 describe('Bien', () => {
   test('debería mostrar la información de un bien', () => {
