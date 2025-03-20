@@ -1,3 +1,6 @@
+//File: menu.ts
+
+//Importa las librerías necesarias
 import inquirer from "inquirer"; // Importa la librería inquirer para interactuar con el usuario a través de la consola
 import { initDB } from "../base_datos/database.js"; // Importa la función para inicializar la base de datos
 import { incluirBien, listarBienes, eliminarBien, modificarBien, buscarBienTipo, buscarBienPorId, buscarBienDescripcion, buscarBienNombre, 
@@ -11,7 +14,10 @@ import { Cliente } from "../models/Cliente.js"; // Importa la clase Cliente que 
 import { Transaccion } from "../services/Transacciones.js"; // Importa la clase Transaccion que representa una transacción en el juego
 import { InformeTransacciones } from "../services/Informes.js"; // Importa la clase InformeTransacciones que representa
 
-async function main() {
+/**
+ * Función principal que maneja la interacción con el usuario
+ */
+export async function main() {
   await initDB(); // Inicializa la base de datos
 
   // Pregunta al usuario qué acción desea realizar
@@ -48,7 +54,11 @@ async function main() {
   if (respuesta.opcion !== "Salir") main();
 }
 
-async function handleBienes(opcion: string) {
+/**
+ * Función que maneja las acciones relacionadas con los bienes del inventario
+ * @param opcion - Opción elegida por el usuario
+ */
+export async function handleBienes(opcion: string) {
   if (opcion === "Añadir bien") {
     // Si el usuario elige "Añadir bien", se le pide que ingrese los detalles del nuevo bien
     const nuevoBien = await inquirer.prompt([
@@ -169,7 +179,11 @@ async function handleBienes(opcion: string) {
   }
 }
 
-async function handleMercaderes(opcion: string) {
+/**
+ * Función que maneja las acciones relacionadas con los mercaderes del juego
+ * @param opcion - Opción elegida por el usuario
+ */
+export async function handleMercaderes(opcion: string) {
   if (opcion === "Añadir mercader") {
     const nuevoMercader = await inquirer.prompt([
       { type: "input", name: "id", message: "ID del mercader:" },
@@ -251,7 +265,11 @@ async function handleMercaderes(opcion: string) {
   }
 }
 
-async function handleClientes(opcion: string) {
+/**
+ * Función que maneja las acciones relacionadas con los clientes del juego
+ * @param opcion - Opción elegida por el usuario
+ */
+export async function handleClientes(opcion: string) {
   if (opcion === "Añadir cliente") {
     const nuevoCliente = await inquirer.prompt([
       { type: "input", name: "id", message: "ID del cliente:" },
@@ -331,7 +349,11 @@ async function handleClientes(opcion: string) {
   }
 }
 
-async function handleTransacciones(opcion: string) {
+/**
+ * Función que maneja las acciones relacionadas con las transacciones del juego
+ * @param opcion - Opción elegida por el usuario
+ */
+export async function handleTransacciones(opcion: string) {
   if (opcion === "Realizar venta") {
     const bienInput = await inquirer.prompt([{ type: "input", name: "bienId", message: "ID del bien que se vende:" }]);
     //Buscamos el bien en la base de datos
@@ -398,7 +420,11 @@ async function handleTransacciones(opcion: string) {
   }
 }
 
-async function handleInformes(opcion: string) {
+/**
+ * Función que maneja las acciones relacionadas con los informes del juego
+ * @param opcion - Opción elegida por el usuario
+ */
+export async function handleInformes(opcion: string) {
   if (opcion === "Realizar informe del stock") {
     const informe = new InformeTransacciones();
     informe.estadoStock();

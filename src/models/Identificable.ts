@@ -1,5 +1,4 @@
-// Interface Identificable
-
+// File: Identificable.ts
 /**
  * Interfaz Identificable
  * 
