@@ -39,6 +39,21 @@ export class Transaccion {
     this.IdPersona = IdPersona;
     this.coronas = coronas;
   }
+
+  static fromObject(transaccionData: any): Transaccion {
+    return new Transaccion(
+      transaccionData.tipo,
+      transaccionData.bienId,
+      transaccionData.coronas,
+      transaccionData.IdPersona
+    );
+  }
+
+  mostrarInfo() {
+    console.log(`Cantidad: ${this.coronas} coronas`);
+    console.log(`Fecha: ${this.fecha.toLocaleString()}`);
+    console.log(`Id del bien : ${this.bienId}`);
+  }
 }
 
 /**

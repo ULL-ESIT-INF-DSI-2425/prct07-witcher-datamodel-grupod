@@ -22,19 +22,21 @@ export async function main() {
 
   // Pregunta al usuario qué acción desea realizar
   const respuesta = await inquirer.prompt([
-      { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar informe del stock", "Informe de los bienes más vendidos",
+      { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar informe del stock", "Realizar informe detallado del stock", "Realizar informe de bienes más vendidos",
+                                                                               "Realizar informe de bienes más demandados", "Realizar informe financiero", "Realizar informe de transacciones",
                                                                                "Realizar venta", "Realizar compra", "Realizar devolucion a cliente", "Realizar devolucion a mercader",
                                                                                "Añadir cliente", "Ver clientes", "Eliminar cliente", "Modificar cliente", "Buscar cliente",
                                                                                "Añadir mercader", "Ver mercaderes", "Eliminar mercader", "Modificar mercader", "Buscar mercader",
                                                                                "Añadir bien", "Eliminar bien", "Modificar bien", "Ver bienes", "Buscar bien", "Salir"] }
   ]);
 
-  if (respuesta.opcion.includes("bien")) {
-    await handleBienes(respuesta.opcion);
-  } 
-  else if (respuesta.opcion === "Realizar venta" || respuesta.opcion === "Realizar compra" || respuesta.opcion === "Realizar devolucion a cliente" || respuesta.opcion === "Realizar devolucion a mercader") {
+  
+  if (respuesta.opcion === "Realizar venta" || respuesta.opcion === "Realizar compra" || respuesta.opcion === "Realizar devolucion a cliente" || respuesta.opcion === "Realizar devolucion a mercader") {
     await handleTransacciones(respuesta.opcion);
   }
+  else if (respuesta.opcion.includes("bien") && !respuesta.opcion.includes("informe")) {
+    await handleBienes(respuesta.opcion);
+  } 
   else if (respuesta.opcion.includes("informe")) {
     await handleInformes(respuesta.opcion);
   }
@@ -429,7 +431,48 @@ export async function handleInformes(opcion: string) {
     const informe = new InformeTransacciones();
     informe.estadoStock();
   }
-    
+  else if (opcion === "Realizar informe detallado del stock") {
+    const respuesta = await inquirer.prompt([
+      { type: "list", name: "opcion", message: "¿Qué tipo de informe deseas realizar?", choices: ["Por tipo", "Artículo en concreto"] }
+    ]);
+    if (respuesta.opcion === "Por tipo") {
+      const tipoBien = await inquirer.prompt([{ type: "input", name: "tipo", message: "Tipo de bien a buscar:" }]);
+      const informe = new InformeTransacciones();
+      informe.estadoStock(undefined, tipoBien.tipo);
+    }
+    else if (respuesta.opcion === "Artículo en concreto") {
+      const idBien = await inquirer.prompt([{ type: "input", name: "id", message: "ID del bien a buscar:" }]);
+      const informe = new InformeTransacciones();
+      informe.estadoStock(idBien.id);
+    }
+  }
+  else if (opcion === "Realizar informe de bienes más vendidos") {
+    const informe = new InformeTransacciones();
+    informe.bienesMasVendidos();
+  }
+  else if (opcion === "Realizar informe de bienes más demandados") {
+    const informe = new InformeTransacciones();
+    informe.bienesMasDemandados();
+  }
+  else if (opcion === "Realizar informe financiero") {
+    const informe = new InformeTransacciones();
+    informe.resumenFinanciero();
+  }
+  else if (opcion === "Realizar informe de transacciones") {
+    const respuesta = await inquirer.prompt([
+      { type: "list", name: "opcion", message: "¿Qué tipo de informe deseas realizar?", choices: ["De cliente", "De mercader"] }
+    ]);
+    if (respuesta.opcion === "De cliente") {
+      const idCliente = await inquirer.prompt([{ type: "input", name: "id", message: "ID del cliente a buscar:" }]);
+      const informe = new InformeTransacciones();
+      informe.transaccionesCliente(idCliente.id);
+    }
+    else if (respuesta.opcion === "De mercader") {
+      const idMercader = await inquirer.prompt([{ type: "input", name: "id", message: "ID del mercader a buscar:" }]);
+      const informe = new InformeTransacciones
+      informe.transaccionesMercader(idMercader.id);
+    }
+  }
 }
 
 main(); // Ejecuta la función principal

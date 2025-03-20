@@ -582,16 +582,18 @@
     {
       "id": "1",
       "tipo": "venta",
-      "fecha": "2025-03-19T19:49:53.821Z",
+      "fecha": "2025-03-19T20:00:47.008Z",
       "bienId": "1",
-      "IdPersona": "1"
+      "IdPersona": "2",
+      "coronas": 1
     },
     {
       "id": "2",
-      "tipo": "compra",
-      "fecha": "2025-03-19T19:59:11.759Z",
+      "tipo": "venta",
+      "fecha": "2025-03-19T20:00:47.008Z",
       "bienId": "1",
-      "IdPersona": "12"
+      "IdPersona": "2",
+      "coronas": 1
     },
     {
       "id": "3",
