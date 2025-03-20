@@ -3,7 +3,7 @@ import { describe, test, expect } from 'vitest';
 //INFORMES NO ESTA TERMINADO
 
 //Base de datos con test correctos
-// import { db } from ;
+import { db , initDB } from '../src/base_datos/database';
 
 // Models con test correctos
 import { Bien } from '../src/models/Bien';
@@ -18,6 +18,11 @@ import { incluirBien, eliminarBien, modificarBien, buscarBienNombre, buscarBienT
 import { registrarVenta, registrarCompra, procesarDevolucion } from '../src/services/Transacciones';
 
 //Tests
+
+//Base de datos
+
+
+
 
 
 
