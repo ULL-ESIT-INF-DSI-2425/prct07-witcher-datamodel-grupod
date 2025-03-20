@@ -78,35 +78,51 @@ export async function registrarCompra(bienId: string, mercaderId: string) {
   console.log(`💰 Compra realizada: ${bien.nombre} comprado a ${mercader.nombre} por ${bien.valor} coronas.`);
 }
 
-export async function procesarDevolucion(bienId: string, origen: "cliente" | "mercader", coronas: number) {
-  /**
-  await db.read();
+export async function procesarDevolucion(bienId: string, IdPersona: string, tipo: 'venta' | 'compra') {
+  if (tipo === 'venta') {
+    await db.read
 
-  const bien = db.data.bienes.find(b => b.id === bienId);
-  if (!bien) {
-    throw new Error("Bien no encontrado.");
-  }
-
-  let clienteId, mercaderId;
-  if (origen === "cliente") {
-    const cliente = db.data.clientes.find(c => c.id === bienId);
+    const cliente = db.data.clientes.find(c => c.id === IdPersona);
     if (!cliente) {
       throw new Error("Cliente no encontrado.");
     }
-    clienteId = cliente.id;
-  } else {
-    const mercader = db.data.mercaderes.find(m => m.id === bienId);
+
+    const bien = cliente.bienes.find(b => b.id === bienId);
+    if (!bien) {
+      throw new Error("Bien no encontrado.");
+    }
+
+    cliente.dinero += bien.valor;
+    const transaccion = new Transaccion('devolucion', bienId, bien.valor, IdPersona);
+
+    cliente.bienes = cliente.bienes.filter(b => b.id !== bienId);
+
+    db.data.bienes.push(bien);
+    db.data.transacciones.push(transaccion);
+    await db.write();
+    console.log(`💰 Devolución procesada: ${bien.nombre} devuelto por ${cliente.nombre} insatisfech@ por ${bien.valor} coronas.`);
+  }
+  else if (tipo === 'compra') {
+    await db.read();
+
+    const mercader = db.data.mercaderes.find(m => m.id === IdPersona);
     if (!mercader) {
       throw new Error("Mercader no encontrado.");
     }
-    mercaderId = mercader.id;
+
+    const bien = db.data.bienes.find(b => b.id === bienId);
+    if (!bien) {
+      throw new Error("Bien no encontrado.");
+    }
+
+    mercader.dinero -= bien.valor;
+    const transaccion = new Transaccion('devolucion', bienId, bien.valor, IdPersona);
+
+    mercader.bienes.push(bien);
+    db.data.bienes = db.data.bienes.filter(b => b.id !== bienId);
+    
+    db.data.transacciones.push(transaccion);
+    await db.write();
+    console.log(`💰 Devolución procesada: ${bien.nombre} devuelto por ${mercader.nombre} defectuos@ por ${bien.valor} coronas.`);
   }
-
-  const transaccion = new Transaccion('devolucion', bienId, coronas, clienteId, mercaderId);
-
-  db.data.transacciones.push(transaccion);
-  await db.write();
-
-  console.log(`🔄 Devolución procesada: ${bien.nombre} devuelto por un ${origen} por ${coronas} coronas.`);
-  */
 }

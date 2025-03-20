@@ -15,7 +15,7 @@ async function main() {
 
   // Pregunta al usuario qué acción desea realizar
   const respuesta = await inquirer.prompt([
-      { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar venta", "Realizar compra",
+      { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar venta", "Realizar compra", "Realizar devolución de cliente", "Realizar devolución a mercader",
                                                                                "Añadir cliente", "Ver clientes", "Eliminar cliente", "Modificar cliente", "Buscar cliente",
                                                                                "Añadir mercader", "Ver mercaderes", "Eliminar mercader", "Modificar mercader", "Buscar mercader",
                                                                                "Añadir bien", "Eliminar bien", "Modificar bien", "Ver bienes", "Buscar bien", "Salir"] }
@@ -356,6 +356,42 @@ async function handleTransacciones(opcion: string) {
       return;
     }
     await registrarCompra(bien.id, mercaderInput.mercaderId);
+  }
+
+  if (opcion === "Realizar devolución de cliente") {
+    const clienteInput = await inquirer.prompt([{ type: "input", name: "clienteId", message: "ID del cliente que devuelve:" }]);
+    //Buscamos el cliente en la base de datos
+    const cliente = await buscarClienteId(clienteInput.clienteId);
+    if (!cliente) {
+      console.log("No se encontró un cliente con ese ID.");
+      return;
+    }
+    const bienInput = await inquirer.prompt([{ type: "input", name: "bienId", message: "ID del bien que se devuelve:" }]);
+    //Buscamos el bien en la base de datos
+    const bien = await cliente.bienes.find(b => b.id === bienInput.bienId);
+    if (!bien) {
+      console.log("No se encontró un bien con ese ID.");
+      return;
+    }
+    await procesarDevolucion(bien.id, clienteInput.clienteId);
+  }
+  
+  if (opcion === "Realizar devolución a mercader") {
+    const mercaderInput = await inquirer.prompt([{ type: "input", name: "mercaderId", message: "ID del mercader que devuelve:" }]);
+    //Buscamos el mercader en la base de datos
+    const mercader = await buscarMercaderId(mercaderInput.mercaderId);
+    if (!mercader) {
+      console.log("No se encontró un mercader con ese ID.");
+      return;
+    }
+    const bienInput = await inquirer.prompt([{ type: "input", name: "bienId", message: "ID del bien que se devuelve:" }]);
+    //Buscamos el bien en la base de datos
+    const bien = mercader.bienes.find(b => b.id === bienInput.bienId);
+    if (!bien) {
+      console.log("No se encontró un bien con ese ID.");
+      return;
+    }
+    await procesarDevolucion(bien.id, mercaderInput.mercaderId);
   }
 }
 

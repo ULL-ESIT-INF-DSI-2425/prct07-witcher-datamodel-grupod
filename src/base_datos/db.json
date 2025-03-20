@@ -1,20 +1,244 @@
 {
   "bienes": [
     {
-      "id": "2",
-      "nombre": "Corona",
+      "id": "1",
+      "nombre": "Orens",
       "descripcion": "Moneda de curso legal en los Reinos del Norte.",
       "material": "Oro",
       "peso": 0.01,
       "valor": 1
     },
     {
-      "id": "1",
-      "nombre": "Corona",
-      "descripcion": "Moneda de curso legal en los Reinos del Norte.",
-      "material": "Oro",
-      "peso": 0.01,
-      "valor": 1
+      "id": "2",
+      "nombre": "Espada de Acero de Brujo",
+      "descripcion": "Un arma obtenida de Vesemir, perfecta para matar humanos.",
+      "material": "Acero",
+      "peso": 1.74,
+      "valor": 200
+    },
+    {
+      "id": "4",
+      "nombre": "Armadura de Zirael",
+      "descripcion": "Obtenida del cadáver de Opinicius",
+      "material": "Acero",
+      "peso": 21,
+      "valor": 3490
+    },
+    {
+      "id": "3",
+      "nombre": "Espada Harvall",
+      "descripcion": "Una gran recompensa para una desafortunada misión",
+      "material": "Acero",
+      "peso": 8,
+      "valor": 1470
+    },
+    {
+      "id": "5",
+      "nombre": "Aerondight",
+      "descripcion": "Espada de plata legendaria que brilla con poder, otorgada por la Dama del Lago.",
+      "material": "Plata encantada",
+      "peso": 2.1,
+      "valor": 5000
+    },
+    {
+      "id": "6",
+      "nombre": "Iris",
+      "descripcion": "La espada de Olgierd von Everec, imbuida con energía mágica.",
+      "material": "Acero maldito",
+      "peso": 2.0,
+      "valor": 3000
+    },
+    {
+      "id": "7",
+      "nombre": "Ballesta de Fisstech",
+      "descripcion": "Una ballesta creada para disparar virotes impregnados con Fisstech.",
+      "material": "Madera y acero",
+      "peso": 3.5,
+      "valor": 1200
+    },
+    {
+      "id": "8",
+      "nombre": "Guanteletes del Grifo",
+      "descripcion": "Parte del set de la escuela del Grifo, mejora la magia de señales.",
+      "material": "Acero reforzado",
+      "peso": 3.0,
+      "valor": 950
+    },
+    {
+      "id": "9",
+      "nombre": "Botas de la Víbora",
+      "descripcion": "Unas botas resistentes, creadas por la Escuela de la Víbora.",
+      "material": "Cuero endurecido",
+      "peso": 2.2,
+      "valor": 800
+    },
+    {
+      "id": "10",
+      "nombre": "Trofeo de Quimera",
+      "descripcion": "La cabeza de una feroz Quimera, usada como trofeo de caza.",
+      "material": "Órganos de monstruo",
+      "peso": 5.0,
+      "valor": 1800
+    },
+    {
+      "id": "11",
+      "nombre": "Decocción de Ekhidna",
+      "descripcion": "Poción que permite regenerar salud con cada ataque.",
+      "material": "Ingredientes alquímicos",
+      "peso": 0.5,
+      "valor": 400
+    },
+    {
+      "id": "12",
+      "nombre": "Garra de Leshen",
+      "descripcion": "Parte de un Leshen, usada en alquimia para pociones raras.",
+      "material": "Órgano de monstruo",
+      "peso": 0.7,
+      "valor": 650
+    },
+    {
+      "id": "13",
+      "nombre": "Pergamino de Runas",
+      "descripcion": "Un pergamino con inscripciones de runas antiguas.",
+      "material": "Papel encantado",
+      "peso": 0.3,
+      "valor": 500
+    },
+    {
+      "id": "14",
+      "nombre": "Amuleto de Lobo Blanco",
+      "descripcion": "Un amuleto que vibra en presencia de magia.",
+      "material": "Plata y cuero",
+      "peso": 0.4,
+      "valor": 1200
+    },
+    {
+      "id": "15",
+      "nombre": "Anillo de la Logia",
+      "descripcion": "Un anillo perteneciente a una Hechicera de la Logia.",
+      "material": "Oro y zafiro",
+      "peso": 0.2,
+      "valor": 1500
+    },
+    {
+      "id": "16",
+      "nombre": "Corazón de Gólem",
+      "descripcion": "Órgano artificial de un gólem, usado en alquimia.",
+      "material": "Cristal y esencia mágica",
+      "peso": 2.5,
+      "valor": 2000
+    },
+    {
+      "id": "17",
+      "nombre": "Contrato de Bestia",
+      "descripcion": "Un contrato detallado sobre la caza de un monstruo.",
+      "material": "Papel y tinta",
+      "peso": 0.1,
+      "valor": 150
+    },
+    {
+      "id": "18",
+      "nombre": "Aceite de espectros",
+      "descripcion": "Aceite especial que mejora el daño contra espectros.",
+      "material": "Ingredientes alquímicos",
+      "peso": 0.3,
+      "valor": 350
+    },
+    {
+      "id": "19",
+      "nombre": "Flor de Mandrágora",
+      "descripcion": "Ingrediente raro usado en pociones de alto nivel.",
+      "material": "Planta",
+      "peso": 0.2,
+      "valor": 500
+    },
+    {
+      "id": "20",
+      "nombre": "Máscara de Uroboros",
+      "descripcion": "Una máscara mística utilizada en rituales antiguos.",
+      "material": "Madera encantada",
+      "peso": 1.0,
+      "valor": 2500
+    },
+    {
+      "id": "21",
+      "nombre": "Tónico de Katakan",
+      "descripcion": "Brebaje que mejora la visión nocturna.",
+      "material": "Ingredientes alquímicos",
+      "peso": 0.5,
+      "valor": 600
+    },
+    {
+      "id": "22",
+      "nombre": "Llave de la Cripta de Kaer Morhen",
+      "descripcion": "Una llave antigua perteneciente a la fortaleza de los brujos.",
+      "material": "Hierro forjado",
+      "peso": 0.3,
+      "valor": 1000
+    },
+    {
+      "id": "23",
+      "nombre": "Vino de Toussaint",
+      "descripcion": "Un exclusivo vino elaborado en la región de Toussaint.",
+      "material": "Vid fermentada",
+      "peso": 1.2,
+      "valor": 800
+    },
+    {
+      "id": "24",
+      "nombre": "Medallón de la Escuela del Gato",
+      "descripcion": "Un medallón de brujos de la Escuela del Gato.",
+      "material": "Plata",
+      "peso": 0.3,
+      "valor": 1400
+    },
+    {
+      "id": "25",
+      "nombre": "Pata de Kikimora",
+      "descripcion": "Parte de un monstruo usada en la creación de tónicos.",
+      "material": "Órgano de monstruo",
+      "peso": 1.1,
+      "valor": 750
+    },
+    {
+      "id": "26",
+      "nombre": "Pluma de Basilisco",
+      "descripcion": "Rara pluma de un basilisco, usada en alquimia avanzada.",
+      "material": "Pluma encantada",
+      "peso": 0.6,
+      "valor": 1200
+    },
+    {
+      "id": "27",
+      "nombre": "Reliquia de Lara Dorren",
+      "descripcion": "Una reliquia élfica con gran poder mágico.",
+      "material": "Madera y gemas encantadas",
+      "peso": 1.5,
+      "valor": 5000
+    },
+    {
+      "id": "28",
+      "nombre": "Contrato de Djinn",
+      "descripcion": "Un contrato para capturar o liberar un Djinn.",
+      "material": "Pergamino antiguo",
+      "peso": 0.4,
+      "valor": 2500
+    },
+    {
+      "id": "29",
+      "nombre": "Cráneo de Beann'shie",
+      "descripcion": "Restos de una criatura espectral con gran energía mágica.",
+      "material": "Hueso encantado",
+      "peso": 3.0,
+      "valor": 3200
+    },
+    {
+      "id": "30",
+      "nombre": "Polvo de Vampiro Superior",
+      "descripcion": "Restos de un vampiro antiguo, usados en alquimia.",
+      "material": "Ceniza mágica",
+      "peso": 0.8,
+      "valor": 1800
     }
   ],
   "mercaderes": [
