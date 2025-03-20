@@ -61,5 +61,24 @@ describe("Bien", () => {
     const bien = new Bien("9", "Daga", "Pequeña pero mortal", "Hierro", 1, 0);
     expect(bien.valor).toBe(0);
   });
+
+  test("Debe aceptar valores en límite de peso y valor", () => {
+    const bien = new Bien("10", "Piedra", "Una piedra común", "Piedra", 0, 0);
+    expect(bien.peso).toBe(0);
+    expect(bien.valor).toBe(0);
+  });
+
+  test("Debe manejar correctamente un valor negativo de peso y valor", () => {
+    const bien = new Bien("11", "Basura", "Basura sin valor", "Basura", -1, -1);
+    expect(bien.peso).toBeLessThan(0);
+    expect(bien.valor).toBeLessThan(0);
+  });
+
+  test("Debe manejar correctamente un valor negativo de peso y valor", () => {
+    const bien = new Bien("12", "Basura", "Basura sin valor", "Basura", -1, -1);
+    expect(bien.peso).toBeLessThan(0);
+    expect(bien.valor).toBeLessThan(0);
+  });
+
 });
  

@@ -76,4 +76,15 @@ describe("Mercader", () => {
     const mercader = new Mercader("", "Coën", "Brujo", "Kaer Morhen", 1000, []);
     expect(mercader.id).toBe("");
   });
+
+  test("Debe aceptar mercaderes sin bienes", () => {
+    const mercader = new Mercader("10", "Vesemir", "Brujo", "Kaer Morhen", 200, []);
+    expect(mercader.bienes).toHaveLength(0);
+  });
+
+  test("Debe aceptar mercaderes con bienes vacíos", () => {
+    const mercader = new Mercader("11", "Lambert", "Brujo", "Kaer Morhen", 500, []);
+    expect(mercader.bienes).toHaveLength(0);
+  });
+
 });

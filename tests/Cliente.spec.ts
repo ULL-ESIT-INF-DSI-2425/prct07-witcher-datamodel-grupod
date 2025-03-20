@@ -79,4 +79,9 @@ describe("Cliente", () => {
     expect(cliente.bienes).toHaveLength(0);
   });
 
+  test("Debe aceptar clientes con bienes vacíos", () => {
+    const cliente = new Cliente("11", "Gollum", "Hobbit", "Cueva", 50, []);
+    expect(cliente.bienes).toHaveLength(0);
+  });
+  
 });
