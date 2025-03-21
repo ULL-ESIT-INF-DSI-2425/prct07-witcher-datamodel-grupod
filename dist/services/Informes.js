@@ -143,7 +143,7 @@ export class InformeTransacciones {
             console.log(`El histórico de transacciones del mercader es el siguiente:`);
             transacciones.forEach(t => t.mostrarInfo());
         }
-        console.log("〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​​");
+        console.log("〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​​");
     }
     /**
      * Método asincrónico que calcula el total de coronas

@@ -32,9 +32,9 @@ export class Transaccion {
         return new Transaccion(transaccionData.tipo, transaccionData.bienId, transaccionData.coronas, transaccionData.IdPersona);
     }
     mostrarInfo() {
-        console.log(`Cantidad: ${this.coronas} coronas
-       Fecha: ${this.fecha.toLocaleString()}
-       Id del bien : ${this.bienId}`);
+        console.log(`Cantidad: ${this.coronas} coronas`);
+        console.log(`Fecha: ${this.fecha.toLocaleString()}`);
+        console.log(`Id del bien : ${this.bienId}`);
     }
 }
 /**
