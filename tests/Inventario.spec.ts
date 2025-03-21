@@ -297,6 +297,12 @@ describe("Inventario", () => {
     await eliminarMercader(str);
   });
 
+  test("eliminarMercader devuelve false si el mercader no existe", async () => {
+    const resultado = await eliminarMercader("9999"); // ID inexistente
+
+    expect(resultado).toBe(false);
+  });
+
   test("Debe modificar un mercader correctamente", async () => {
     const mercader = new Mercader("20", "Vesemir", "Armero", "Kaer Morhen", 1000, []);
     await incluirMercader(mercader);
@@ -309,6 +315,17 @@ describe("Inventario", () => {
     expect(mercaderEncontrado.dinero).toBe(1500);
 
     // Limpiamos la base de datos
+    let str: string = "20";
+    await eliminarMercader(str);
+  });
+
+  test("Debe modificar mal un mercader correctamente", async () => {
+    const mercader = new Mercader("30", "Vesemir", "Armero", "Kaer Morhen", 1000, []);
+    await incluirMercader(mercader);
+
+    const resultado = await modificarMercader("51", mercader);
+    expect(resultado).toBe(false);
+    //eliminamos el mercader
     let str: string = "20";
     await eliminarMercader(str);
   });
@@ -408,6 +425,12 @@ describe("Inventario", () => {
     await eliminarCliente(str);
   });
 
+  test("eliminarCliente devuelve false si el cliente no existe", async () => {
+    const resultado = await eliminarCliente("9999"); // ID inexistente
+
+    expect(resultado).toBe(false);
+  });
+
   test("Debe modificar un cliente correctamente", async () => {
     const cliente = new Cliente("30", "Geralt", "Brujo", "Rivia", 1000, []);
     await incluirCliente(cliente);
@@ -420,6 +443,17 @@ describe("Inventario", () => {
     expect(clienteEncontrado.dinero).toBe(1500);
 
     // Limpiamos la base de datos
+    let str: string = "30";
+    await eliminarCliente(str);
+  });
+
+  test("Debe modificar mal un cliente correctamente", async () => {
+    const cliente = new Cliente("30", "Geralt", "Brujo", "Rivia", 1000, []);
+    await incluirCliente(cliente);
+
+    const resultado = await modificarCliente("51", cliente);
+    expect(resultado).toBe(false);
+    //eliminamos el cliente
     let str: string = "30";
     await eliminarCliente(str);
   });

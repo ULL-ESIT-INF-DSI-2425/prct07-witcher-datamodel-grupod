@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1742569965230" clover="3.2.0">
-  <project timestamp="1742569965230" name="All files">
-    <metrics statements="938" coveredstatements="437" conditionals="145" coveredconditionals="136" methods="53" coveredmethods="50" elements="1136" coveredelements="623" complexity="0" loc="938" ncloc="938" packages="4" files="9" classes="9"/>
+<coverage generated="1742571680433" clover="3.2.0">
+  <project timestamp="1742571680433" name="All files">
+    <metrics statements="938" coveredstatements="445" conditionals="147" coveredconditionals="142" methods="53" coveredmethods="50" elements="1138" coveredelements="637" complexity="0" loc="938" ncloc="938" packages="4" files="9" classes="9"/>
     <package name="base_datos">
       <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="database.ts" path="/home/usuario/prct07-witcher-datamodel-grupod/src/base_datos/database.ts">
@@ -437,32 +437,32 @@
         <metrics statements="29" coveredstatements="29" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
         <line num="6" count="1" type="stmt"/>
         <line num="16" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="407" type="stmt"/>
-        <line num="18" count="407" type="stmt"/>
-        <line num="19" count="407" type="stmt"/>
-        <line num="20" count="407" type="stmt"/>
-        <line num="21" count="407" type="stmt"/>
-        <line num="22" count="407" type="stmt"/>
-        <line num="23" count="407" type="stmt"/>
+        <line num="17" count="394" type="stmt"/>
+        <line num="18" count="394" type="stmt"/>
+        <line num="19" count="394" type="stmt"/>
+        <line num="20" count="394" type="stmt"/>
+        <line num="21" count="394" type="stmt"/>
+        <line num="22" count="394" type="stmt"/>
+        <line num="23" count="394" type="stmt"/>
         <line num="29" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="30" count="33" type="stmt"/>
-        <line num="31" count="33" type="stmt"/>
+        <line num="30" count="31" type="stmt"/>
+        <line num="31" count="31" type="stmt"/>
         <line num="37" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="38" count="5" type="stmt"/>
-        <line num="39" count="5" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
         <line num="45" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="46" count="4" type="stmt"/>
-        <line num="47" count="4" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
         <line num="54" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="55" count="371" type="stmt"/>
-        <line num="56" count="371" type="stmt"/>
-        <line num="57" count="371" type="stmt"/>
-        <line num="58" count="371" type="stmt"/>
-        <line num="59" count="371" type="stmt"/>
-        <line num="60" count="371" type="stmt"/>
-        <line num="61" count="371" type="stmt"/>
-        <line num="62" count="371" type="stmt"/>
-        <line num="63" count="371" type="stmt"/>
+        <line num="55" count="369" type="stmt"/>
+        <line num="56" count="369" type="stmt"/>
+        <line num="57" count="369" type="stmt"/>
+        <line num="58" count="369" type="stmt"/>
+        <line num="59" count="369" type="stmt"/>
+        <line num="60" count="369" type="stmt"/>
+        <line num="61" count="369" type="stmt"/>
+        <line num="62" count="369" type="stmt"/>
+        <line num="63" count="369" type="stmt"/>
         <line num="64" count="1" type="stmt"/>
       </file>
       <file name="Cliente.ts" path="/home/usuario/prct07-witcher-datamodel-grupod/src/models/Cliente.ts">
@@ -470,27 +470,27 @@
         <line num="4" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="20" count="48" type="stmt"/>
-        <line num="21" count="48" type="stmt"/>
-        <line num="22" count="48" type="stmt"/>
-        <line num="23" count="48" type="stmt"/>
-        <line num="24" count="48" type="stmt"/>
-        <line num="25" count="48" type="stmt"/>
-        <line num="26" count="48" type="stmt"/>
+        <line num="20" count="50" type="stmt"/>
+        <line num="21" count="50" type="stmt"/>
+        <line num="22" count="50" type="stmt"/>
+        <line num="23" count="50" type="stmt"/>
+        <line num="24" count="50" type="stmt"/>
+        <line num="25" count="50" type="stmt"/>
+        <line num="26" count="50" type="stmt"/>
         <line num="32" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="33" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="34" count="2" type="stmt"/>
         <line num="35" count="2" type="stmt"/>
         <line num="42" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="43" count="27" type="stmt"/>
-        <line num="44" count="27" type="stmt"/>
-        <line num="45" count="27" type="stmt"/>
-        <line num="46" count="27" type="stmt"/>
-        <line num="47" count="27" type="stmt"/>
-        <line num="48" count="27" type="stmt"/>
-        <line num="49" count="27" type="cond" truecount="1" falsecount="0"/>
-        <line num="50" count="27" type="stmt"/>
-        <line num="51" count="27" type="stmt"/>
+        <line num="43" count="28" type="stmt"/>
+        <line num="44" count="28" type="stmt"/>
+        <line num="45" count="28" type="stmt"/>
+        <line num="46" count="28" type="stmt"/>
+        <line num="47" count="28" type="stmt"/>
+        <line num="48" count="28" type="stmt"/>
+        <line num="49" count="28" type="cond" truecount="1" falsecount="0"/>
+        <line num="50" count="28" type="stmt"/>
+        <line num="51" count="28" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
       </file>
       <file name="Identificable.ts" path="/home/usuario/prct07-witcher-datamodel-grupod/src/models/Identificable.ts">
@@ -501,13 +501,13 @@
         <line num="4" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="20" count="51" type="stmt"/>
-        <line num="21" count="51" type="stmt"/>
-        <line num="22" count="51" type="stmt"/>
-        <line num="23" count="51" type="stmt"/>
-        <line num="24" count="51" type="stmt"/>
-        <line num="25" count="51" type="stmt"/>
-        <line num="26" count="51" type="stmt"/>
+        <line num="20" count="68" type="stmt"/>
+        <line num="21" count="68" type="stmt"/>
+        <line num="22" count="68" type="stmt"/>
+        <line num="23" count="68" type="stmt"/>
+        <line num="24" count="68" type="stmt"/>
+        <line num="25" count="68" type="stmt"/>
+        <line num="26" count="68" type="stmt"/>
         <line num="32" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="33" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="34" count="2" type="stmt"/>
@@ -516,20 +516,20 @@
         <line num="42" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
         <line num="50" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="51" count="28" type="stmt"/>
-        <line num="52" count="28" type="stmt"/>
-        <line num="53" count="28" type="stmt"/>
-        <line num="54" count="28" type="stmt"/>
-        <line num="55" count="28" type="stmt"/>
-        <line num="56" count="28" type="stmt"/>
-        <line num="57" count="28" type="cond" truecount="1" falsecount="0"/>
-        <line num="58" count="28" type="stmt"/>
-        <line num="59" count="28" type="stmt"/>
+        <line num="51" count="44" type="stmt"/>
+        <line num="52" count="44" type="stmt"/>
+        <line num="53" count="44" type="stmt"/>
+        <line num="54" count="44" type="stmt"/>
+        <line num="55" count="44" type="stmt"/>
+        <line num="56" count="44" type="stmt"/>
+        <line num="57" count="44" type="cond" truecount="1" falsecount="0"/>
+        <line num="58" count="44" type="stmt"/>
+        <line num="59" count="44" type="stmt"/>
         <line num="60" count="1" type="stmt"/>
       </file>
     </package>
     <package name="services">
-      <metrics statements="439" coveredstatements="342" conditionals="126" coveredconditionals="117" methods="38" coveredmethods="35"/>
+      <metrics statements="439" coveredstatements="350" conditionals="128" coveredconditionals="123" methods="38" coveredmethods="35"/>
       <file name="Informes.ts" path="/home/usuario/prct07-witcher-datamodel-grupod/src/services/Informes.ts">
         <metrics statements="130" coveredstatements="123" conditionals="46" coveredconditionals="41" methods="7" coveredmethods="7"/>
         <line num="6" count="1" type="stmt"/>
@@ -664,7 +664,7 @@
         <line num="180" count="1" type="stmt"/>
       </file>
       <file name="Inventario.ts" path="/home/usuario/prct07-witcher-datamodel-grupod/src/services/Inventario.ts">
-        <metrics statements="192" coveredstatements="184" conditionals="76" coveredconditionals="72" methods="24" coveredmethods="24"/>
+        <metrics statements="192" coveredstatements="192" conditionals="78" coveredconditionals="78" methods="24" coveredmethods="24"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -739,32 +739,32 @@
         <line num="131" count="1" type="stmt"/>
         <line num="133" count="5" type="stmt"/>
         <line num="134" count="5" type="stmt"/>
-        <line num="140" count="9" type="cond" truecount="1" falsecount="0"/>
-        <line num="141" count="9" type="stmt"/>
-        <line num="142" count="9" type="stmt"/>
-        <line num="143" count="9" type="stmt"/>
-        <line num="144" count="9" type="stmt"/>
-        <line num="145" count="9" type="stmt"/>
-        <line num="152" count="9" type="cond" truecount="1" falsecount="0"/>
-        <line num="153" count="9" type="stmt"/>
-        <line num="154" count="9" type="cond" truecount="1" falsecount="0"/>
-        <line num="155" count="9" type="stmt"/>
+        <line num="140" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="141" count="10" type="stmt"/>
+        <line num="142" count="10" type="stmt"/>
+        <line num="143" count="10" type="stmt"/>
+        <line num="144" count="10" type="stmt"/>
+        <line num="145" count="10" type="stmt"/>
+        <line num="152" count="11" type="cond" truecount="1" falsecount="0"/>
+        <line num="153" count="11" type="stmt"/>
+        <line num="154" count="11" type="cond" truecount="1" falsecount="0"/>
+        <line num="155" count="11" type="cond" truecount="1" falsecount="0"/>
         <line num="156" count="9" type="stmt"/>
         <line num="157" count="9" type="stmt"/>
         <line num="158" count="9" type="stmt"/>
-        <line num="159" count="9" type="cond" truecount="0" falsecount="1"/>
-        <line num="160" count="0" type="stmt"/>
-        <line num="161" count="0" type="stmt"/>
-        <line num="169" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="170" count="1" type="stmt"/>
-        <line num="171" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="172" count="1" type="stmt"/>
+        <line num="159" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="160" count="2" type="stmt"/>
+        <line num="161" count="2" type="stmt"/>
+        <line num="169" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="170" count="2" type="stmt"/>
+        <line num="171" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="172" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="173" count="1" type="stmt"/>
         <line num="174" count="1" type="stmt"/>
         <line num="175" count="1" type="stmt"/>
-        <line num="176" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="177" count="0" type="stmt"/>
-        <line num="178" count="0" type="stmt"/>
+        <line num="176" count="1" type="stmt"/>
+        <line num="177" count="1" type="stmt"/>
+        <line num="178" count="1" type="stmt"/>
         <line num="184" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="185" count="1" type="stmt"/>
         <line num="186" count="1" type="stmt"/>
@@ -799,32 +799,32 @@
         <line num="241" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="242" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="243" count="1" type="stmt"/>
-        <line num="249" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="250" count="8" type="stmt"/>
-        <line num="251" count="8" type="stmt"/>
-        <line num="252" count="8" type="stmt"/>
-        <line num="253" count="8" type="stmt"/>
-        <line num="254" count="8" type="stmt"/>
-        <line num="261" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="262" count="8" type="stmt"/>
-        <line num="263" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="264" count="8" type="stmt"/>
-        <line num="265" count="8" type="stmt"/>
-        <line num="266" count="8" type="stmt"/>
-        <line num="267" count="8" type="stmt"/>
-        <line num="268" count="8" type="cond" truecount="0" falsecount="1"/>
-        <line num="269" count="0" type="stmt"/>
-        <line num="270" count="0" type="stmt"/>
-        <line num="278" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="279" count="1" type="stmt"/>
-        <line num="280" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="281" count="1" type="stmt"/>
+        <line num="249" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="250" count="9" type="stmt"/>
+        <line num="251" count="9" type="stmt"/>
+        <line num="252" count="9" type="stmt"/>
+        <line num="253" count="9" type="stmt"/>
+        <line num="254" count="9" type="stmt"/>
+        <line num="261" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="262" count="10" type="stmt"/>
+        <line num="263" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="264" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="265" count="9" type="stmt"/>
+        <line num="266" count="9" type="stmt"/>
+        <line num="267" count="9" type="stmt"/>
+        <line num="268" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="269" count="1" type="stmt"/>
+        <line num="270" count="1" type="stmt"/>
+        <line num="278" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="279" count="2" type="stmt"/>
+        <line num="280" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="281" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="282" count="1" type="stmt"/>
         <line num="283" count="1" type="stmt"/>
         <line num="284" count="1" type="stmt"/>
-        <line num="285" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="286" count="0" type="stmt"/>
-        <line num="287" count="0" type="stmt"/>
+        <line num="285" count="1" type="stmt"/>
+        <line num="286" count="1" type="stmt"/>
+        <line num="287" count="1" type="stmt"/>
         <line num="293" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="294" count="1" type="stmt"/>
         <line num="295" count="1" type="cond" truecount="1" falsecount="0"/>
