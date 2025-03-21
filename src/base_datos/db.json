@@ -489,6 +489,14 @@
       "ubicacion": "Kaer Morhen",
       "dinero": 1000,
       "bienes": []
+    },
+    {
+      "id": "30",
+      "nombre": "Vesemir",
+      "tipo": "Armero",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 1000,
+      "bienes": []
     }
   ],
   "clientes": [
