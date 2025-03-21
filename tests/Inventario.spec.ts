@@ -47,6 +47,13 @@ describe("Inventario", () => {
     await eliminarBien(str1);
   });
 
+  test("eliminarBien devuelve false si el bien no existe", async () => {
+    const resultado = await eliminarBien("9999"); // ID inexistente
+  
+    expect(resultado).toBe(false);
+  });
+  
+
   test("Debe modificar un bien correctamente", async () => {
     const bien = new Bien("48", "Espada", "Una espada", "Hierro", 3, 100);
     await incluirBien(bien);
@@ -61,6 +68,17 @@ describe("Inventario", () => {
     expect(bienEncontrado.valor).toBe(150);
 
     // Limpiamos la base de datos
+    let str: string = "48";
+    await eliminarBien(str);
+  });
+
+  test("Debe modificar mal un bien correctamente", async () => {
+    const bien = new Bien("48", "Espada", "Una espada", "Hierro", 3, 100);
+    await incluirBien(bien);
+
+    const resultado = await modificarBien("49", bien);
+    expect(resultado).toBe(false);
+    //eliminamos el bien
     let str: string = "48";
     await eliminarBien(str);
   });
@@ -136,6 +154,100 @@ describe("Inventario", () => {
     // Limpiamos la base de datos
     let str: string = "48";
     await eliminarBien(str);
+  });
+
+  test("listarBienes ordena alfabéticamente de manera ascendente", async () => {
+    const bienes = await listarBienes("asc_alf");
+    
+    //Si se añade o elimina o modifica cualquier bien, este test fallará
+    expect(bienes.map(b => b.nombre)).toEqual([
+      "Aceite de espectros",
+      "Aerondight",
+      "Amuleto de Lobo Blanco",
+      "Anillo de la Logia",
+      "Armadura de Zirael",
+      "Ballesta de Fisstech",
+      "Botas de la Víbora",
+      "Contrato de Bestia",
+      "Contrato de Djinn",
+      "Corazón de Gólem",
+      "Cráneo de Beann'shie",
+      "Decocción de Ekhidna",
+      "Espada de Acero de Brujo",
+      "Espada Harvall",
+      "Flor de Mandrágora",
+      "Garra de Leshen",
+      "Guanteletes del Grifo",
+      "Iris",
+      "Llave de la Cripta de Kaer Morhen",
+      "Máscara de Uroboros",
+      "Medallón de la Escuela del Gato",
+      "Orens",
+      "Pata de Kikimora",
+      "Pergamino de Runas",
+      "Pluma de Basilisco",
+      "Reliquia de Lara Dorren",
+      "Tónico de Katakan",
+      "Trofeo de Quimera",
+      "Vino de Toussaint",
+    ]);
+  });
+  
+  test("listarBienes ordena alfabéticamente de manera descendente", async () => {
+    const bienes = await listarBienes("desc_alf");
+  
+    expect(bienes.map(b => b.nombre)).toEqual([
+      "Vino de Toussaint",
+      "Trofeo de Quimera",
+      "Tónico de Katakan",
+      "Reliquia de Lara Dorren",
+      "Pluma de Basilisco",
+      "Pergamino de Runas",
+      "Pata de Kikimora",
+      "Orens",
+      "Medallón de la Escuela del Gato",
+      "Máscara de Uroboros",
+      "Llave de la Cripta de Kaer Morhen",
+      "Iris",
+      "Guanteletes del Grifo",
+      "Garra de Leshen",
+      "Flor de Mandrágora",
+      "Espada Harvall",
+      "Espada de Acero de Brujo",
+      "Decocción de Ekhidna",
+      "Cráneo de Beann'shie",
+      "Corazón de Gólem",
+      "Contrato de Djinn",
+      "Contrato de Bestia",
+      "Botas de la Víbora",
+      "Ballesta de Fisstech",
+      "Armadura de Zirael",
+      "Anillo de la Logia",
+      "Amuleto de Lobo Blanco",
+      "Aerondight",
+      "Aceite de espectros",
+    ]);
+  });
+
+  test("listarBienes ordena por valor de manera ascendente", async () => {
+    const bienes = await listarBienes("asc_valor");
+  
+    expect(bienes.map(b => b.valor)).toEqual([
+      1, 150, 200, 350, 400, 500, 500, 600, 650, 750, 800, 800, 950, 1000, 1200, 1200, 
+      1200, 1400, 1470, 1500, 1800, 2000, 2500, 2500, 3000, 3200, 3490, 5000, 5000
+    ]);
+    
+  });
+
+  test("listarBienes ordena por valor de manera descendente", async () => {
+    const bienes = await listarBienes("desc_valor");
+
+    expect(bienes.map(b => b.valor)).toEqual([
+      5000, 5000, 3490, 3200, 3000, 2500, 2500, 2000, 1800, 1500, 1470, 1400, 1200, 1200, 1200, 1000, 
+      950, 800, 800, 750, 650, 600, 500, 500, 400, 350,
+      200, 150, 1
+
+    ]);
   });
 
   test("Debe incluir un mercader correctamente", async () => {

@@ -19,7 +19,7 @@ jobs:
       with:
         node-version: 23.x
     - name: Installing dependencies
-      run: npm ci --legacy-peer-deps
+      run: npm ci
     - name: Generating coverage information
       run: npm run coverage
     - name: Coveralls GitHub Action

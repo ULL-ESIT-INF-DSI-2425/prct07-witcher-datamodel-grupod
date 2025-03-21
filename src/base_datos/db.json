@@ -576,6 +576,14 @@
           "valor": 500
         }
       ]
+    },
+    {
+      "id": "30",
+      "nombre": "Geralt",
+      "raza": "Brujo",
+      "ubicacion": "Rivia",
+      "dinero": 1000,
+      "bienes": []
     }
   ],
   "transacciones": [

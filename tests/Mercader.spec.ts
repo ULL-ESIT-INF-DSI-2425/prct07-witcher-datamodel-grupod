@@ -20,6 +20,11 @@ describe("Mercader", () => {
     expect(mercader.bienes).toHaveLength(0);
   });
 
+  test("Sacar dienro", () => {
+    const mercader = new Mercader("1", "Geralt", "Brujo", "Rivia", 500, []);
+    expect(mercader.getDinero()).toBe(500);
+  });
+
   test("Debe agregar bienes correctamente", () => {
     const bien = new Bien("13", "Varita", "Varita mágica", "Madera", 0.5, 200);
     const mercader = new Mercader("2", "Yennefer", "Hechicera", "Vengerberg", 1000, [bien]);

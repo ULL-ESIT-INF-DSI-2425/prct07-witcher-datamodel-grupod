@@ -10,6 +10,7 @@ import { Cliente } from '../src/models/Cliente';
 import { Transaccion } from '../src/services/Transacciones';
 
 import { InformeTransacciones } from '../src/services/Informes';
+import {  } from '../src/services/Inventario';
 
 //Informes con test correctos
 describe('Informes', () => {
@@ -47,5 +48,49 @@ describe('Informes', () => {
     await informes.transaccionesMercader(str);
   });
 
+  test("estadoStock filtra por ID de bien", async () => {
+    const informes = new InformeTransacciones();
+    await informes.estadoStock("1");
+  });
+
+  test("estadoStock filtra por tipo de bien", async () => {
+    const informes = new InformeTransacciones();
+    await informes.estadoStock(undefined, "Madera");
+  });
+
+  test("estadoStock filtra por ID y tipo de bien", async () => {
+    const informes = new InformeTransacciones();
+    await informes.estadoStock("1", "Madera");
+  });
+
+  test ("bienesMasVendidos si es 0", async () => {
+    const informes = new InformeTransacciones();
+    await informes.bienesMasVendidos(0);
+  });
+
+  test ("bienesMasDemandados si es 0", async () => {
+    const informes = new InformeTransacciones();
+    await informes.bienesMasDemandados(0);
+  });
+
+  test ("transaccionesCliente si es 0", async () => {
+    const informes = new InformeTransacciones();
+    await informes.transaccionesCliente("0");
+  });
+
+  test ("transaccionesMercader si no es 0", async () => {
+    const informes = new InformeTransacciones();
+    await informes.transaccionesMercader("1");
+  });
+
+  test ("transaccionesMercader si es 0", async () => {
+    const informes = new InformeTransacciones();
+    await informes.transaccionesMercader("0");
+  });
+
+  test ("transaccionesMercader no muestra transacciones de venta", async () => {
+    const informes = new InformeTransacciones();
+    await informes.transaccionesMercader("1");
+  });
 });
  
