@@ -109,7 +109,7 @@ export async function listarBienes(orden = "asc_alf") {
     await db.read();
     let bienes = db.data.bienes.map(bien => Bien.fromObject(bien) // Usamos el método fromObject
     );
-    // Ordenar los bienes según el criterio especificado
+    // Ordenar los bienes según el criterio especificado -> Esto nos va a pasar factura en los testss
     if (orden === "asc_alf") {
         bienes.sort((a, b) => a.nombre.localeCompare(b.nombre)); // Orden alfabético ascendente
     }

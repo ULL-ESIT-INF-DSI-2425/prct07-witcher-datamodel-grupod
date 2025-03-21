@@ -577,6 +577,46 @@
       "ubicacion": "Kaer Morhen",
       "dinero": 1000,
       "bienes": []
+    },
+    {
+      "id": "30",
+      "nombre": "Vesemir",
+      "tipo": "Armero",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 1000,
+      "bienes": []
+    },
+    {
+      "id": "30",
+      "nombre": "Vesemir",
+      "tipo": "Armero",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 1000,
+      "bienes": []
+    },
+    {
+      "id": "30",
+      "nombre": "Vesemir",
+      "tipo": "Armero",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 1000,
+      "bienes": []
+    },
+    {
+      "id": "30",
+      "nombre": "Vesemir",
+      "tipo": "Armero",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 1000,
+      "bienes": []
+    },
+    {
+      "id": "30",
+      "nombre": "Vesemir",
+      "tipo": "Armero",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 1000,
+      "bienes": []
     }
   ],
   "clientes": [
@@ -707,6 +747,14 @@
     },
     {
       "id": "30",
+      "nombre": "Geralt",
+      "raza": "Brujo",
+      "ubicacion": "Rivia",
+      "dinero": 1000,
+      "bienes": []
+    },
+    {
+      "id": "34",
       "nombre": "Geralt",
       "raza": "Brujo",
       "ubicacion": "Rivia",
