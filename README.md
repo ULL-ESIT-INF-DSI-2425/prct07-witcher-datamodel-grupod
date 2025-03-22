@@ -90,7 +90,7 @@ Para poder ejecutar correctamente el programa debera utilizar los siguientes com
 * Se han realizado pruebas de la interfaz de usuario para verificar su usabilidad.
 * Se han analizado los resultados de SonarCloud y Coveralls para evaluar la calidad del código y la cobertura de pruebas.
 
-## 7. Conclusiones
+## Conclusiones
 
 El proyecto ha cumplido con los requisitos establecidos y ha demostrado ser una solución eficaz para la gestión de inventario de la Posada del Lobo Blanco.
 
