@@ -19,8 +19,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=witcher-datamodel-grupod
-            -Dsonar.organization=grupod
+            -Dsonar.projectKey=prct07-witcher-datamodel-grupod
+            -Dsonar.organization=ULL-ESIT-INF-DSI-2425
             -Dsonar.sources=.
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
