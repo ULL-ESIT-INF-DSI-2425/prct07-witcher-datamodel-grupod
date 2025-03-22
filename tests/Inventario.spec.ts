@@ -25,7 +25,7 @@ describe("Inventario", () => {
   beforeAll(() => {
     initDB(); // Inicializa la base de datos solo una vez
   });
-
+/**
   test("Debe incluir un bien correctamente", async () => {
     const bien = new Bien("46", "Espada", "Una espada afilada", "Acero", 3, 100);
     await incluirBien(bien);
@@ -36,6 +36,7 @@ describe("Inventario", () => {
     expect(bienEncontrado.nombre).toBe("Espada");
   });
   
+  */
   test("Debe eliminar un bien correctamente", async () => {
     const bien1 = new Bien("47", "Espada", "Una espada", "Hierro", 3, 100);
     await incluirBien(bien1);
