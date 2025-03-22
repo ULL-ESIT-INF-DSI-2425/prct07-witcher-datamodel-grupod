@@ -20,3 +20,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: prct07-witcher-datamodel-grupod
+          SONAR_ORGANIZATION: grupod
+          SONAR_PROJECT_NAME: prct07-witcher-datamodel-grupod
