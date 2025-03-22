@@ -17,4 +17,9 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.exclusions=**/build-wrapper-dump.json,**/tests/**
+            -Dsonar.sources=src
+            
           
