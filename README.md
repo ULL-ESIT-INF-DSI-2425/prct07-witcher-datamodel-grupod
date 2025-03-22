@@ -13,13 +13,17 @@ Informe sobre el primer proyecto evaluable de la asignatura de Desarrollo de sis
 ## Metodología
 
 Se ha organizado en varias carpetas, las cuales contienen los ficheros correspondientes con los apartados que se especifican en el guión de la practica.
-* src -> ficheros con el código fuente del programa completo
+* src -> Ficheros con el código fuente del programa completo
 * test -> Realización de las pruebas para comprobar el correcto funcionamiento
-* 
+* dist -> Ficheros en java y typescript
+* docs -> documentación generada con typedoc
+* Otros ficheros de configuración del entorno
 
-## Resultados
+## Ejecutar el programa
 
-Presentación de los datos y hallazgos principales.
+Para poder ejecutar correctamente el programa debera utilizar los siguientes comandos:
+  -
+  -
 
 ### Subsección 1
 
