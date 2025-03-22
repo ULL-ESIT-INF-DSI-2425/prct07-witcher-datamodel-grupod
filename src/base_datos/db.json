@@ -231,22 +231,6 @@
       "material": "Planta",
       "peso": 0.2,
       "valor": 500
-    },
-    {
-      "id": "65",
-      "nombre": "Bien de prueba",
-      "descripcion": "Descripción de prueba",
-      "material": "Madera",
-      "peso": 10,
-      "valor": 100
-    },
-    {
-      "id": "65",
-      "nombre": "Bien de prueba",
-      "descripcion": "Descripción de prueba",
-      "material": "Madera",
-      "peso": 10,
-      "valor": 100
     }
   ],
   "mercaderes": [
@@ -553,126 +537,6 @@
       "ubicacion": "Kaer Morhen",
       "dinero": 1000,
       "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
     }
   ],
   "clientes": [
@@ -800,22 +664,6 @@
           "valor": 500
         }
       ]
-    },
-    {
-      "id": "30",
-      "nombre": "Geralt",
-      "raza": "Brujo",
-      "ubicacion": "Rivia",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "34",
-      "nombre": "Geralt",
-      "raza": "Brujo",
-      "ubicacion": "Rivia",
-      "dinero": 1000,
-      "bienes": []
     }
   ],
   "transacciones": [

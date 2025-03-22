@@ -22,13 +22,12 @@ export async function main() {
 
   // Pregunta al usuario qué acción desea realizar
   const respuesta = await inquirer.prompt([
-      { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar informe del stock", "Realizar informe detallado del stock", "Realizar informe de bienes más vendidos",
-                                                                               "Realizar informe de bienes más demandados", "Realizar informe financiero", "Realizar informe de transacciones",
-                                                                               "Realizar venta", "Realizar compra", "Realizar devolucion a cliente", "Realizar devolucion a mercader",
-                                                                               "Añadir cliente", "Ver clientes", "Eliminar cliente", "Modificar cliente", "Buscar cliente",
-                                                                               "Añadir mercader", "Ver mercaderes", "Eliminar mercader", "Modificar mercader", "Buscar mercader",
-                                                                               "Añadir bien", "Eliminar bien", "Modificar bien", "Ver bienes", "Buscar bien", "Salir"] }
-  ]);
+    { type: "list", name: "opcion", message: "¿Qué deseas hacer?", choices: ["Realizar informe del stock", "Realizar informe detallado del stock", "Realizar informe de bienes más vendidos",
+                                                                             "Realizar informe de bienes más demandados", "Realizar informe financiero", "Realizar informe de transacciones",
+                                                                             "Realizar venta", "Realizar compra", "Realizar devolucion a cliente", "Realizar devolucion a mercader",
+                                                                             "Añadir cliente", "Ver clientes", "Eliminar cliente", "Modificar cliente", "Buscar cliente",
+                                                                             "Añadir mercader", "Ver mercaderes", "Eliminar mercader", "Modificar mercader", "Buscar mercader",
+                                                                             "Añadir bien", "Eliminar bien", "Modificar bien", "Ver bienes", "Buscar bien", "Salir"] }]);
 
   
   if (respuesta.opcion === "Realizar venta" || respuesta.opcion === "Realizar compra" || respuesta.opcion === "Realizar devolucion a cliente" || respuesta.opcion === "Realizar devolucion a mercader") {
@@ -46,12 +45,10 @@ export async function main() {
   else if (respuesta.opcion.includes("mercader")) {
     await handleMercaderes(respuesta.opcion);
   }
-  
   else {
     console.log("Saliendo...");
     return;
   }
-
   // Si el usuario no elige "Salir", se vuelve a ejecutar la función main para permitir más acciones
   if (respuesta.opcion !== "Salir") main();
 }
@@ -69,8 +66,7 @@ export async function handleBienes(opcion: string) {
       { type: "input", name: "descripcion", message: "Descripción del bien:" },
       { type: "input", name: "material", message: "Material:" },
       { type: "number", name: "peso", message: "Peso (kg):" },
-      { type: "number", name: "valor", message: "Valor en coronas:" }
-    ]);
+      { type: "number", name: "valor", message: "Valor en coronas:" }]);
       
     // Crea una nueva instancia de Bien con los datos ingresados y la añade al inventario
     await incluirBien(new Bien(nuevoBien.id, nuevoBien.nombre, nuevoBien.descripcion, nuevoBien.material, nuevoBien.peso, nuevoBien.valor));
@@ -98,8 +94,7 @@ export async function handleBienes(opcion: string) {
       { type: "input", name: "descripcion", message: "Nueva descripción del bien:", default: bien.descripcion },
       { type: "input", name: "material", message: "Nuevo material:", default: bien.material },
       { type: "number", name: "peso", message: "Nuevo peso (kg):", default: bien.peso },
-      { type: "number", name: "valor", message: "Nuevo valor en coronas:", default: bien.valor }
-    ]);
+      { type: "number", name: "valor", message: "Nuevo valor en coronas:", default: bien.valor }]);
     // Crea una nueva instancia de Bien con los datos ingresados y modifica el bien en el inventario
     await modificarBien(idBien.id, new Bien(idBien.id, nuevoBien.nombre, nuevoBien.descripcion, nuevoBien.material, nuevoBien.peso, nuevoBien.valor));
     console.log("Bien modificado exitosamente.");
@@ -107,56 +102,55 @@ export async function handleBienes(opcion: string) {
   else if (opcion === "Buscar bien") {
     // Si el usuario elige "Buscar bien", se le pide que ingrese el tipo de búsqueda a realizar
     const tipoBusqueda = await inquirer.prompt([
-        { type: "list", name: "tipo", message: "¿Cómo deseas buscar el bien?", choices: ["ID", "Nombre", "Descripción", "Material"] }
+      { type: "list", name: "tipo", message: "¿Cómo deseas buscar el bien?", choices: ["ID", "Nombre", "Descripción", "Material"] }
     ]);
 
-    let bien: Bien | Bien[] = [];  // Inicializar bien como un arreglo vacío
+    let bien: Bien | Bien[] = []; 
     switch (tipoBusqueda.tipo) {
-        case "ID":
-            const idBien = await inquirer.prompt([{ type: "input", name: "id", message: "ID del bien a buscar:" }]);
-            bien = await buscarBienPorId(idBien.id);
-            break;
-        case "Nombre":
-            const nombreBien = await inquirer.prompt([{ type: "input", name: "nombre", message: "Nombre del bien a buscar:" }]);
-            bien = await buscarBienNombre(nombreBien.nombre);
-            break;
-        case "Descripción":
-            const descripcionBien = await inquirer.prompt([{ type: "input", name: "descripcion", message: "Descripción del bien a buscar:" }]);
-            bien = await buscarBienDescripcion(descripcionBien.descripcion);
-            break;
-        case "Material":
-            const materialBien = await inquirer.prompt([{ type: "input", name: "material", message: "Material del bien a buscar:" }]);
-            bien = await buscarBienTipo(materialBien.material);
-            break;
+      case "ID":
+        const idBien = await inquirer.prompt([{ type: "input", name: "id", message: "ID del bien a buscar:" }]);
+        bien = await buscarBienPorId(idBien.id);
+        break;
+      case "Nombre":
+        const nombreBien = await inquirer.prompt([{ type: "input", name: "nombre", message: "Nombre del bien a buscar:" }]);
+        bien = await buscarBienNombre(nombreBien.nombre);
+        break;
+      case "Descripción":
+        const descripcionBien = await inquirer.prompt([{ type: "input", name: "descripcion", message: "Descripción del bien a buscar:" }]);
+        bien = await buscarBienDescripcion(descripcionBien.descripcion);
+        break;
+      case "Material":
+        const materialBien = await inquirer.prompt([{ type: "input", name: "material", message: "Material del bien a buscar:" }]);
+        bien = await buscarBienTipo(materialBien.material);
+        break;
     }
-
-    // Verificación de tipo y muestra de la información
     if (Array.isArray(bien)) {
       if (bien.length > 0) {
         // Pregunta al usuario cómo desea ordenar los resultados
         const orden = await inquirer.prompt([
-          { type: "list", name: "orden", message: "¿Cómo deseas ordenar los resultados?", choices: ["Ascendente (alfabético)", "Descendente (alfabético)", "Ascendente (valor)", "Descendente (valor)"] }
-        ]);
-
+          { type: "list", name: "orden", message: "¿Cómo deseas ordenar los resultados?", 
+            choices: ["Ascendente (alfabético)", "Descendente (alfabético)", "Ascendente (valor)", "Descendente (valor)"] }]);
         // Ordena los bienes según la elección del usuario
         let ordenar = "asc_alf";
         if (orden.orden === "Ascendente (alfabético)") {
           ordenar = "asc_alf";
-        } else if (orden.orden === "Descendente (alfabético)") {
+        } 
+        else if (orden.orden === "Descendente (alfabético)") {
           ordenar = "desc_alf";
-        } else if (orden.orden === "Ascendente (valor)") {
+        } 
+        else if (orden.orden === "Ascendente (valor)") {
           ordenar = "asc_valor";
-        } else if (orden.orden === "Descendente (valor)") {
+        } 
+        else if (orden.orden === "Descendente (valor)") {
           ordenar = "desc_valor";
         }
-
         bien = await listarBienes(ordenar);
-
         console.log("Bienes encontrados:");
         bien.forEach((b) => {
           if (b instanceof Bien) {
             console.log(b.mostrarInfo());
-          } else {
+          } 
+          else {
             console.log("Error: El objeto encontrado no es un bien válido.");
           }
         });
@@ -171,7 +165,6 @@ export async function handleBienes(opcion: string) {
     else {
       console.log("No se encontró un bien con esos criterios de búsqueda.");
     }
-
   }
   else if (opcion === "Ver bienes") {
     // Si el usuario elige "Ver bienes", se obtiene la lista de bienes del inventario y se muestra en la consola
@@ -195,7 +188,7 @@ export async function handleMercaderes(opcion: string) {
       { type: "number", name: "dinero", message: "Dinero del mercader:" },
     ]);
     await incluirMercader(new Mercader(nuevoMercader.id, nuevoMercader.nombre, nuevoMercader.tipo, nuevoMercader.ubicacion, nuevoMercader.dinero, []));
-    console.log("Mercader agregado exitosamente.");
+    console.log("Mercader añadido exitosamente.");
   }
   else if (opcion === "Ver mercaderes") {
     console.log("Lista de mercaderes:");
@@ -225,7 +218,7 @@ export async function handleMercaderes(opcion: string) {
   }
   else if (opcion === "Buscar mercader") {
     const tipoBusqueda = await inquirer.prompt([
-        { type: "list", name: "tipo", message: "¿Cómo deseas buscar el mercader?", choices: ["Nombre", "Tipo", "Ubicación"] }
+      { type: "list", name: "tipo", message: "¿Cómo deseas buscar el mercader?", choices: ["Nombre", "Tipo", "Ubicación"] }
     ]);
 
     let mercader: Mercader | Mercader[] = [];
@@ -243,18 +236,19 @@ export async function handleMercaderes(opcion: string) {
         mercader = await buscarMercaderUbicacion(ubicacionMercader.ubicacion);
         break;
     }
-
     if (Array.isArray(mercader)) {
       if (mercader.length > 0) {
         console.log("Mercaderes encontrados:");
         mercader.forEach((m) => {
           if (m instanceof Mercader) {
             console.log(m.mostrarInfo());
-          } else {
+          } 
+          else {
             console.log("Error: El objeto encontrado no es un mercader válido.");
           }
         });
-      } else {
+      } 
+      else {
         console.log("No se encontraron mercaderes con esos criterios.");
       }
     } 
@@ -311,7 +305,7 @@ export async function handleClientes(opcion: string) {
   }
   else if (opcion === "Buscar cliente") {
     const tipoBusqueda = await inquirer.prompt([
-        { type: "list", name: "tipo", message: "¿Cómo deseas buscar el cliente?", choices: ["Nombre", "Raza", "Ubicación"] }
+      { type: "list", name: "tipo", message: "¿Cómo deseas buscar el cliente?", choices: ["Nombre", "Raza", "Ubicación"] }
     ]);
     let cliente: Cliente | Cliente[] = [];
     switch (tipoBusqueda.tipo) {
@@ -334,11 +328,13 @@ export async function handleClientes(opcion: string) {
         cliente.forEach((c) => {
           if (c instanceof Cliente) {
             console.log(c.mostrarInfo());
-          } else {
+          } 
+          else {
             console.log("Error: El objeto encontrado no es un cliente válido.");
           }
         });
-      } else {
+      } 
+      else {
         console.log("No se encontraron clientes con esos criterios.");
       }
     }
@@ -433,8 +429,7 @@ export async function handleInformes(opcion: string) {
   }
   else if (opcion === "Realizar informe detallado del stock") {
     const respuesta = await inquirer.prompt([
-      { type: "list", name: "opcion", message: "¿Qué tipo de informe deseas realizar?", choices: ["Por tipo", "Artículo en concreto"] }
-    ]);
+      { type: "list", name: "opcion", message: "¿Qué tipo de informe deseas realizar?", choices: ["Por tipo", "Artículo en concreto"] }]);
     if (respuesta.opcion === "Por tipo") {
       const tipoBien = await inquirer.prompt([{ type: "input", name: "tipo", message: "Tipo de bien a buscar:" }]);
       const informe = new InformeTransacciones();
@@ -460,8 +455,7 @@ export async function handleInformes(opcion: string) {
   }
   else if (opcion === "Realizar informe de transacciones") {
     const respuesta = await inquirer.prompt([
-      { type: "list", name: "opcion", message: "¿Qué tipo de informe deseas realizar?", choices: ["De cliente", "De mercader"] }
-    ]);
+      { type: "list", name: "opcion", message: "¿Qué tipo de informe deseas realizar?", choices: ["De cliente", "De mercader"] }]);
     if (respuesta.opcion === "De cliente") {
       const idCliente = await inquirer.prompt([{ type: "input", name: "id", message: "ID del cliente a buscar:" }]);
       const informe = new InformeTransacciones();

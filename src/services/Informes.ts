@@ -19,21 +19,20 @@ export class InformeTransacciones {
   async estadoStock(bienId?: string, tipoBien?: string): Promise<void> {  
     await db.read();  // El await es necesario para que la función espere a que se lea la base de datos
     
-    let bienes = db.data.bienes.map(
-      bien => Bien.fromObject(bien) // Usamos el método fromObject
-    );
+    let bienes = db.data.bienes.map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
 
     if (bienId) {
-      bienes = bienes.filter(b => b.id === bienId); // Filtramos por ID
+      bienes = bienes.filter(bien => bien.id === bienId); // Filtramos por ID
     } 
     if (tipoBien) {
-      bienes = bienes.filter(b => b.material === tipoBien); // Filtramos por tipo de bien
+      bienes = bienes.filter(bien => bien.material === tipoBien); // Filtramos por tipo de bien
     }
     console.log("🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦Estado del Stock📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦")
     if (bienes.length === 0) {
       console.log("No hay bienes disponibles con los filtros aplicados.");
-    } else {
-      bienes.forEach(b => console.log(b.mostrarInfo()));
+    } 
+    else {
+      bienes.forEach(bien => console.log(bien.mostrarInfo()));
     }
     console.log("🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷📦🔷")
   }
@@ -42,19 +41,21 @@ export class InformeTransacciones {
    * Método asincrónico que muestra los bienes más vendidos
    * @param top - Número de bienes a mostrar
    */
-  async bienesMasVendidos(top: number = 5): Promise<void> {
+  async bienesMasVendidos(): Promise<void> {
+    let top = 5;
     await db.read();
     
-    const ventas = db.data.transacciones.filter((t: Transaccion) => t.tipo === 'venta');  // Filtramos las ventas
+    const ventas = db.data.transacciones.filter((transaccion: Transaccion) => transaccion.tipo === 'venta');  // Filtramos las ventas
     
     // Obtenemos el bien más vendido
     const bienesMasVendidos = [];
     for (const t of ventas) {
-      let bien = bienesMasVendidos.find(b => b.bienId === t.bienId);
+      let bien = bienesMasVendidos.find(bien => bien.bienId === t.bienId);
       if (bien) {
-      bien.cantidad++;
-      } else {
-      bienesMasVendidos.push({ bienId: t.bienId, cantidad: 1 });
+        bien.cantidad++;
+      } 
+      else {
+        bienesMasVendidos.push({ bienId: t.bienId, cantidad: 1 });
       }
     }
     bienesMasVendidos.sort((a, b) => b.cantidad - a.cantidad);
@@ -66,12 +67,10 @@ export class InformeTransacciones {
       console.log("No hay bienes vendidos.");
     } 
     else {
-      let bienes = db.data.bienes.map(
-        bien => Bien.fromObject(bien) // Usamos el método fromObject
-      );
-      bienesMasVendidos.forEach(b => {
-        const bien = bienes.find(bien => bien.id === b.bienId);
-        console.log(`${bien ? bien.getNombre() : "Bien desconocido"} - ${b.cantidad} unidades`);
+      let bienes = db.data.bienes.map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
+      bienesMasVendidos.forEach(bien_top => {
+        const bien = bienes.find(bien => bien.id === bien_top.bienId);
+        console.log(`${bien ? bien.getNombre() : "Bien desconocido"} - ${bien_top.cantidad} unidades`);
       });
     }
     console.log(`🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦`);
@@ -79,16 +78,16 @@ export class InformeTransacciones {
 
   async bienesMasDemandados(top: number = 5): Promise<void> {
     await db.read();
-    
-    const ventas = db.data.transacciones.filter((t: Transaccion) => t.tipo === 'compra');  // Filtramos las ventas
+    const ventas = db.data.transacciones.filter((transaccion: Transaccion) => transaccion.tipo === 'compra');  // Filtramos las ventas
     
     // Obtenemos el bien más vendido
     const bienesMasDemandados = [];
     for (const t of ventas) {
-      let bien = bienesMasDemandados.find(b => b.bienId === t.bienId);
+      let bien = bienesMasDemandados.find(bien => bien.bienId === t.bienId);
       if (bien) {
-      bien.cantidad++;
-      } else {
+        bien.cantidad++;
+      } 
+      else {
         bienesMasDemandados.push({ bienId: t.bienId, cantidad: 1 });
       }
     }
@@ -104,9 +103,9 @@ export class InformeTransacciones {
       let bienes = db.data.bienes.map(
         bien => Bien.fromObject(bien) // Usamos el método fromObject
       );
-      bienesMasDemandados.forEach(b => {
-        const bien = bienes.find(bien => bien.id === b.bienId);
-        console.log(`${bien ? bien.getNombre() : "Bien desconocido"} - ${b.cantidad} unidades`);
+      bienesMasDemandados.forEach(bien_demandado => {
+        const bien = bienes.find(bien => bien.id === bien_demandado.bienId);
+        console.log(`${bien ? bien.getNombre() : "Bien desconocido"} - ${bien_demandado.cantidad} unidades`);
       });
     }
     console.log(`🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦🪙📦`);
@@ -132,9 +131,7 @@ export class InformeTransacciones {
    */
   async transaccionesCliente(personaId: string): Promise<void> {
     await db.read();
-    let transacciones = db.data.transacciones.map(
-      transaccion => Transaccion.fromObject(transaccion) // Usamos el método fromObject
-    );
+    let transacciones = db.data.transacciones.map(transaccion => Transaccion.fromObject(transaccion)); // Usamos el método fromObject
     transacciones = transacciones.filter(t => t.IdPersona === personaId && t.tipo === 'venta');
     console.log("➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​")
     if (transacciones.length === 0) {
@@ -147,16 +144,19 @@ export class InformeTransacciones {
     console.log("〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​〰️​​")
   }
 
+  /**
+   * Método asincrónico que muestra el histórico de transacciones de un mercader
+   * @param personaId - Identificador de la persona
+   */
   async transaccionesMercader(personaId: string): Promise<void> {
     await db.read();
-    let transacciones = db.data.transacciones.map(
-      transaccion => Transaccion.fromObject(transaccion) // Usamos el método fromObject
-    );
+    let transacciones = db.data.transacciones.map(transaccion => Transaccion.fromObject(transaccion)); // Usamos el método fromObject
     transacciones = transacciones.filter(t => t.IdPersona === personaId && t.tipo === 'compra');
     console.log("➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​➿​")
     if (transacciones.length === 0) {
       console.log(`El mercader con ID ${personaId} no ha realizado compras.`);
-    } else {
+    } 
+    else {
       console.log(`El histórico de transacciones del mercader es el siguiente:`);
       transacciones.forEach(t => t.mostrarInfo());
     }
@@ -169,11 +169,7 @@ export class InformeTransacciones {
    */
   private async calcularTotalCoronas(tipo: 'venta' | 'compra'): Promise<number> {
     await db.read();
-    
-    let transacciones = db.data.transacciones.map(
-      transaccion => Transaccion.fromObject(transaccion) // Usamos el método fromObject
-    );
-
+    let transacciones = db.data.transacciones.map(transaccion => Transaccion.fromObject(transaccion)); // Usamos el método fromObject
     transacciones = transacciones.filter((t: Transaccion) => t.tipo === tipo);
     return transacciones.reduce((total: number, t: Transaccion) => total + t.coronas, 0);
   }

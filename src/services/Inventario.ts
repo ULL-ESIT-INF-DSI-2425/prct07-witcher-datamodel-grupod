@@ -29,9 +29,9 @@ export async function incluirBien(bien: Bien) {
  */
 export async function eliminarBien(id: string) {
   await db.read();
-  const index = db.data.bienes.findIndex(bien => bien.id === id);
-  if (index !== -1) {
-    db.data.bienes.splice(index, 1);
+  const indice = db.data.bienes.findIndex(bien => bien.id === id);
+  if (indice !== -1) {
+    db.data.bienes.splice(indice, 1);
     await db.write();
     return true;
   }
@@ -46,9 +46,9 @@ export async function eliminarBien(id: string) {
  */
 export async function modificarBien(id: string, nuevoBien: Bien) {
   await db.read();
-  const index = db.data.bienes.findIndex(bien => bien.id === id);
-  if (index !== -1) {
-    db.data.bienes[index] = Bien.fromObject(nuevoBien); // Usamos el método fromObject
+  const indice = db.data.bienes.findIndex(bien => bien.id === id);
+  if (indice !== -1) {
+    db.data.bienes[indice] = Bien.fromObject(nuevoBien); // Usamos el método fromObject
     await db.write();
     return true;
   }
@@ -76,9 +76,7 @@ export async function buscarBienNombre(nombre: string): Promise<Bien> {
  */
 export async function buscarBienTipo(material: string): Promise<Bien[]> {
   await db.read();
-  return db.data.bienes
-    .filter(bien => bien.material === material)
-    .map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
+  return db.data.bienes.filter(bien => bien.material === material).map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
 }
 
 /**
@@ -88,9 +86,7 @@ export async function buscarBienTipo(material: string): Promise<Bien[]> {
  */
 export async function buscarBienDescripcion(descripcion: string): Promise<Bien[]> {
   await db.read();
-  return db.data.bienes
-    .filter(bien => bien.descripcion === descripcion)
-    .map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
+  return db.data.bienes.filter(bien => bien.descripcion === descripcion).map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
 }
 
 /**
@@ -122,14 +118,16 @@ export async function listarBienes(orden: string = "asc_alf"): Promise<Bien[]> {
   // Ordenar los bienes según el criterio especificado -> Esto nos va a pasar factura en los testss
   if (orden === "asc_alf") {
     bienes.sort((a, b) => a.nombre.localeCompare(b.nombre));  // Orden alfabético ascendente
-  } else if (orden === "desc_alf") {
+  } 
+  else if (orden === "desc_alf") {
     bienes.sort((a, b) => b.nombre.localeCompare(a.nombre));  // Orden alfabético descendente
-  } else if (orden === "asc_valor") {
+  } 
+  else if (orden === "asc_valor") {
     bienes.sort((a, b) => a.valor - b.valor); // Orden por valor ascendente
-  } else if (orden === "desc_valor") {
+  } 
+  else if (orden === "desc_valor") {
     bienes.sort((a, b) => b.valor - a.valor); // Orden por valor descendente
   }
-
   return bienes;
 }
 
@@ -151,9 +149,9 @@ export async function incluirMercader(mercader: Mercader) {
  */
 export async function eliminarMercader(id: string) {
   await db.read();
-  const index = db.data.mercaderes.findIndex(mercader => mercader.id === id);
-  if (index !== -1) {
-    db.data.mercaderes.splice(index, 1);
+  const indice = db.data.mercaderes.findIndex(mercader => mercader.id === id);
+  if (indice !== -1) {
+    db.data.mercaderes.splice(indice, 1);
     await db.write();
     return true;
   }
@@ -183,9 +181,7 @@ export async function modificarMercader(id: string, nuevoMercader: Mercader) {
  */
 export async function listarMercaderes(): Promise<Mercader[]> {
   await db.read();
-  return db.data.mercaderes.map(
-    mercader => Mercader.fromObject(mercader) // Usamos el método fromObject
-  );
+  return db.data.mercaderes.map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 
 /**
@@ -225,9 +221,7 @@ export async function buscarMercaderNombre(nombre: string): Promise<Mercader> {
  */
 export async function buscarMercaderTipo(tipo: string): Promise<Mercader[]> {
   await db.read();
-  return db.data.mercaderes
-    .filter(mercader => mercader.tipo === tipo)
-    .map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
+  return db.data.mercaderes.filter(mercader => mercader.tipo === tipo).map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 
 /**
@@ -237,9 +231,7 @@ export async function buscarMercaderTipo(tipo: string): Promise<Mercader[]> {
  */
 export async function buscarMercaderUbicacion(ubicacion: string): Promise<Mercader[]> {
   await db.read();
-  return db.data.mercaderes
-    .filter(mercader => mercader.ubicacion === ubicacion)
-    .map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
+  return db.data.mercaderes.filter(mercader => mercader.ubicacion === ubicacion).map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 
 /**
@@ -260,9 +252,9 @@ export async function incluirCliente(cliente: Cliente) {
  */
 export async function eliminarCliente(id: string) {
   await db.read();
-  const index = db.data.clientes.findIndex(cliente => cliente.id === id);
-  if (index !== -1) {
-    db.data.clientes.splice(index, 1);
+  const indice = db.data.clientes.findIndex(cliente => cliente.id === id);
+  if (indice !== -1) {
+    db.data.clientes.splice(indice, 1);
     await db.write();
     return true;
   }
@@ -277,9 +269,9 @@ export async function eliminarCliente(id: string) {
  */
 export async function modificarCliente(id: string, nuevoCliente: Cliente) {
   await db.read();
-  const index = db.data.clientes.findIndex(cliente => cliente.id === id);
-  if (index !== -1) {
-    db.data.clientes[index] = Cliente.fromObject(nuevoCliente); // Usamos el método fromObject
+  const indice = db.data.clientes.findIndex(cliente => cliente.id === id);
+  if (indice !== -1) {
+    db.data.clientes[indice] = Cliente.fromObject(nuevoCliente); // Usamos el método fromObject
     await db.write();
     return true;
   }
@@ -332,9 +324,7 @@ export async function buscarClienteNombre(nombre: string): Promise<Cliente> {
  */
 export async function buscarClienteRaza(raza: string): Promise<Cliente[]> {
   await db.read();
-  return db.data.clientes
-    .filter(cliente => cliente.raza === raza)
-    .map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
+  return db.data.clientes.filter(cliente => cliente.raza === raza).map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }
 
 /**
@@ -344,9 +334,5 @@ export async function buscarClienteRaza(raza: string): Promise<Cliente[]> {
  */
 export async function buscarClienteUbicacion(ubicacion: string): Promise<Cliente[]> {
   await db.read();
-  return db.data.clientes
-    .filter(cliente => cliente.ubicacion === ubicacion)
-    .map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
+  return db.data.clientes.filter(cliente => cliente.ubicacion === ubicacion).map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }
-
-
