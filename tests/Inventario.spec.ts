@@ -45,7 +45,7 @@ describe("Inventario", () => {
 
     let str1: string = "46";
     await eliminarBien(str1);
-  });
+  });  
 
   test("eliminarBien devuelve false si el bien no existe", async () => {
     const resultado = await eliminarBien("9999"); // ID inexistente
