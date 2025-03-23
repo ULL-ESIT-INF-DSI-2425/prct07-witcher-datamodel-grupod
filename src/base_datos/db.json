@@ -465,126 +465,6 @@
       "ubicacion": "Kaer Morhen",
       "dinero": 1000,
       "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
-    },
-    {
-      "id": "30",
-      "nombre": "Vesemir",
-      "tipo": "Armero",
-      "ubicacion": "Kaer Morhen",
-      "dinero": 1000,
-      "bienes": []
     }
   ],
   "clientes": [
@@ -710,6 +590,72 @@
           "material": "Papel antiguo",
           "peso": 0.1,
           "valor": 500
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "nombre": "Ciri",
+      "raza": "Humano",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 2000,
+      "bienes": [
+        {
+          "id": "12",
+          "nombre": "Colgante de Ciri",
+          "descripcion": "Un colgante con un símbolo misterioso, que pertenece a la joven Ciri.",
+          "material": "Plata",
+          "peso": 0.2,
+          "valor": 800
+        },
+        {
+          "id": "13",
+          "nombre": "Espada de Ciri",
+          "descripcion": "Una espada ligera y ágil, forjada especialmente para la joven Ciri.",
+          "material": "Acero",
+          "peso": 1.8,
+          "valor": 1500
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "nombre": "Lambert",
+      "raza": "Brujo",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 1000,
+      "bienes": []
+    },
+    {
+      "id": "10",
+      "nombre": "Eskel",
+      "raza": "Brujo",
+      "ubicacion": "Kaer Morhen",
+      "dinero": 1000,
+      "bienes": []
+    },
+    {
+      "id": "11",
+      "nombre": "Zoltan Chivay",
+      "raza": "Enano",
+      "ubicacion": "Novigrado",
+      "dinero": 2000,
+      "bienes": [
+        {
+          "id": "200",
+          "nombre": "Anillo de Zoltan",
+          "descripcion": "Un anillo de gran tamaño, que pertenece al enano Zoltan.",
+          "material": "Oro y rubíes",
+          "peso": 0.3,
+          "valor": 1500
+        },
+        {
+          "id": "201",
+          "nombre": "Cerveza Enana",
+          "descripcion": "Una cerveza fuerte y amarga, favorita de los enanos.",
+          "material": "Cebada y lúpulo",
+          "peso": 0.5,
+          "valor": 200
         }
       ]
     }
