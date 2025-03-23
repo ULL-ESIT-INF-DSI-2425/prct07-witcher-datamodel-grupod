@@ -22,7 +22,7 @@
 #             -Dsonar.exclusions=**/build-wrapper-dump.json,**/tests/**
 #             -Dsonar.sources=src
 
-name: Build
+name: SonarQube Cloud
 
 on:
   push:

@@ -426,7 +426,7 @@ export async function handleInformes(opcion: string) {
   if (opcion === "Realizar informe del stock") {
     const informe = new InformeTransacciones();
     informe.estadoStock();
-  }
+  }  
   else if (opcion === "Realizar informe detallado del stock") {
     const respuesta = await inquirer.prompt([
       { type: "list", name: "opcion", message: "¿Qué tipo de informe deseas realizar?", choices: ["Por tipo", "Artículo en concreto"] }]);
