@@ -44,8 +44,8 @@ export class Transaccion {
  */
 export async function registrarVenta(bienId, clienteId) {
     await db.read();
-    const bien = db.data.bienes.find(b => b.id === bienId); // Buscamos el bien
-    const cliente = db.data.clientes.find(c => c.id === clienteId); // Buscamos el cliente
+    const bien = db.data.bienes.find(bien => bien.id === bienId); // Buscamos el bien
+    const cliente = db.data.clientes.find(cliente_x => cliente_x.id === clienteId); // Buscamos el cliente
     // Comprobamos que el bien y el cliente existan
     if (!bien || !cliente) {
         console.log("Bien, cliente o mercader no encontrado.");

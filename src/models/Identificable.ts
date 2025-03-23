@@ -9,6 +9,5 @@
  * @method getNombre - Obtiene el nombre
  */
 export interface Identificable {
-  getId(): string;
-  getNombre(): string;
+  Identificarse(): void;
 }

@@ -3,7 +3,9 @@
  * Clase Bien
  * 
  */
-export class Bien {
+import { Identificable } from "./Identificable.js";
+
+export class Bien implements Identificable {
   /**
    * Constructor de la clase Bien
    * @param id - Identificador del bien
@@ -60,5 +62,12 @@ export class Bien {
       bienData.peso,
       bienData.valor
     );
+  }
+
+  /**
+   * Identificarse muestra un mensaje con el nombre del bien
+   */
+  Identificarse(): void {
+    console.log(`Hola!, soy un ${this.nombre}`);
   }
 }

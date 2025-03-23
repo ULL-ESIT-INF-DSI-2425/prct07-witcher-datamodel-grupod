@@ -26,9 +26,9 @@ export async function incluirBien(bien) {
  */
 export async function eliminarBien(id) {
     await db.read();
-    const index = db.data.bienes.findIndex(bien => bien.id === id);
-    if (index !== -1) {
-        db.data.bienes.splice(index, 1);
+    const indice = db.data.bienes.findIndex(bien => bien.id === id);
+    if (indice !== -1) {
+        db.data.bienes.splice(indice, 1);
         await db.write();
         return true;
     }
@@ -42,9 +42,9 @@ export async function eliminarBien(id) {
  */
 export async function modificarBien(id, nuevoBien) {
     await db.read();
-    const index = db.data.bienes.findIndex(bien => bien.id === id);
-    if (index !== -1) {
-        db.data.bienes[index] = Bien.fromObject(nuevoBien); // Usamos el método fromObject
+    const indice = db.data.bienes.findIndex(bien => bien.id === id);
+    if (indice !== -1) {
+        db.data.bienes[indice] = Bien.fromObject(nuevoBien); // Usamos el método fromObject
         await db.write();
         return true;
     }
@@ -70,9 +70,7 @@ export async function buscarBienNombre(nombre) {
  */
 export async function buscarBienTipo(material) {
     await db.read();
-    return db.data.bienes
-        .filter(bien => bien.material === material)
-        .map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
+    return db.data.bienes.filter(bien => bien.material === material).map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
 }
 /**
  * Busca un bien por su Descripción.
@@ -81,9 +79,7 @@ export async function buscarBienTipo(material) {
  */
 export async function buscarBienDescripcion(descripcion) {
     await db.read();
-    return db.data.bienes
-        .filter(bien => bien.descripcion === descripcion)
-        .map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
+    return db.data.bienes.filter(bien => bien.descripcion === descripcion).map(bien => Bien.fromObject(bien)); // Usamos el método fromObject
 }
 /**
  * Busca un bien por su ID
@@ -141,9 +137,9 @@ export async function incluirMercader(mercader) {
  */
 export async function eliminarMercader(id) {
     await db.read();
-    const index = db.data.mercaderes.findIndex(mercader => mercader.id === id);
-    if (index !== -1) {
-        db.data.mercaderes.splice(index, 1);
+    const indice = db.data.mercaderes.findIndex(mercader => mercader.id === id);
+    if (indice !== -1) {
+        db.data.mercaderes.splice(indice, 1);
         await db.write();
         return true;
     }
@@ -171,8 +167,7 @@ export async function modificarMercader(id, nuevoMercader) {
  */
 export async function listarMercaderes() {
     await db.read();
-    return db.data.mercaderes.map(mercader => Mercader.fromObject(mercader) // Usamos el método fromObject
-    );
+    return db.data.mercaderes.map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 /**
  * Busca un mercader por su ID.
@@ -209,9 +204,7 @@ export async function buscarMercaderNombre(nombre) {
  */
 export async function buscarMercaderTipo(tipo) {
     await db.read();
-    return db.data.mercaderes
-        .filter(mercader => mercader.tipo === tipo)
-        .map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
+    return db.data.mercaderes.filter(mercader => mercader.tipo === tipo).map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 /**
  * Busca un mercader por su ubicación.
@@ -220,9 +213,7 @@ export async function buscarMercaderTipo(tipo) {
  */
 export async function buscarMercaderUbicacion(ubicacion) {
     await db.read();
-    return db.data.mercaderes
-        .filter(mercader => mercader.ubicacion === ubicacion)
-        .map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
+    return db.data.mercaderes.filter(mercader => mercader.ubicacion === ubicacion).map(mercader => Mercader.fromObject(mercader)); // Usamos el método fromObject
 }
 /**
  * Incluye un cliente en la base de datos.
@@ -241,9 +232,9 @@ export async function incluirCliente(cliente) {
  */
 export async function eliminarCliente(id) {
     await db.read();
-    const index = db.data.clientes.findIndex(cliente => cliente.id === id);
-    if (index !== -1) {
-        db.data.clientes.splice(index, 1);
+    const indice = db.data.clientes.findIndex(cliente => cliente.id === id);
+    if (indice !== -1) {
+        db.data.clientes.splice(indice, 1);
         await db.write();
         return true;
     }
@@ -257,9 +248,9 @@ export async function eliminarCliente(id) {
  */
 export async function modificarCliente(id, nuevoCliente) {
     await db.read();
-    const index = db.data.clientes.findIndex(cliente => cliente.id === id);
-    if (index !== -1) {
-        db.data.clientes[index] = Cliente.fromObject(nuevoCliente); // Usamos el método fromObject
+    const indice = db.data.clientes.findIndex(cliente => cliente.id === id);
+    if (indice !== -1) {
+        db.data.clientes[indice] = Cliente.fromObject(nuevoCliente); // Usamos el método fromObject
         await db.write();
         return true;
     }
@@ -308,9 +299,7 @@ export async function buscarClienteNombre(nombre) {
  */
 export async function buscarClienteRaza(raza) {
     await db.read();
-    return db.data.clientes
-        .filter(cliente => cliente.raza === raza)
-        .map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
+    return db.data.clientes.filter(cliente => cliente.raza === raza).map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }
 /**
  * Busca un cliente por su ubicación.
@@ -319,7 +308,5 @@ export async function buscarClienteRaza(raza) {
  */
 export async function buscarClienteUbicacion(ubicacion) {
     await db.read();
-    return db.data.clientes
-        .filter(cliente => cliente.ubicacion === ubicacion)
-        .map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
+    return db.data.clientes.filter(cliente => cliente.ubicacion === ubicacion).map(cliente => Cliente.fromObject(cliente)); // Usamos el método fromObject
 }

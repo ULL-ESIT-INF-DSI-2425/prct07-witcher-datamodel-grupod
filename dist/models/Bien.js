@@ -1,8 +1,3 @@
-// File: Bien.ts
-/**
- * Clase Bien
- *
- */
 export class Bien {
     id;
     nombre;
@@ -55,5 +50,11 @@ export class Bien {
      */
     static fromObject(bienData) {
         return new Bien(bienData.id, bienData.nombre, bienData.descripcion, bienData.material, bienData.peso, bienData.valor);
+    }
+    /**
+     * Identificarse muestra un mensaje con el nombre del bien
+     */
+    Identificarse() {
+        console.log(`Hola!, soy un ${this.nombre}`);
     }
 }

@@ -1,8 +1,9 @@
 import { Bien } from "./Bien.js";
+import { Identificable } from "./Identificable.js";
 /**
  * Clase Cliente
 */
-export declare class Cliente {
+export declare class Cliente implements Identificable {
     id: string;
     nombre: string;
     raza: string;
@@ -25,9 +26,18 @@ export declare class Cliente {
      */
     mostrarInfo(): string;
     /**
+     * Obtiene el dinero del cliente
+     * @returns - Dinero del cliente
+     */
+    MuestraDinero(): void;
+    /**
      * FromObject convierte un objeto en un objeto de la clase Cliente
      * @param clienteData - Objeto con los datos del cliente
      * @returns - Objeto Cliente
      */
     static fromObject(clienteData: any): Cliente;
+    /**
+     * Identificarse muestra un mensaje con el nombre del cliente
+     */
+    Identificarse(): void;
 }

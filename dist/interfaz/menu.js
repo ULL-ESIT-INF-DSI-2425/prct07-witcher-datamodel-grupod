@@ -99,7 +99,7 @@ export async function handleBienes(opcion) {
         const tipoBusqueda = await inquirer.prompt([
             { type: "list", name: "tipo", message: "¿Cómo deseas buscar el bien?", choices: ["ID", "Nombre", "Descripción", "Material"] }
         ]);
-        let bien = []; // Inicializar bien como un arreglo vacío
+        let bien = [];
         switch (tipoBusqueda.tipo) {
             case "ID":
                 const idBien = await inquirer.prompt([{ type: "input", name: "id", message: "ID del bien a buscar:" }]);
@@ -118,12 +118,12 @@ export async function handleBienes(opcion) {
                 bien = await buscarBienTipo(materialBien.material);
                 break;
         }
-        // Verificación de tipo y muestra de la información
         if (Array.isArray(bien)) {
             if (bien.length > 0) {
                 // Pregunta al usuario cómo desea ordenar los resultados
                 const orden = await inquirer.prompt([
-                    { type: "list", name: "orden", message: "¿Cómo deseas ordenar los resultados?", choices: ["Ascendente (alfabético)", "Descendente (alfabético)", "Ascendente (valor)", "Descendente (valor)"] }
+                    { type: "list", name: "orden", message: "¿Cómo deseas ordenar los resultados?",
+                        choices: ["Ascendente (alfabético)", "Descendente (alfabético)", "Ascendente (valor)", "Descendente (valor)"] }
                 ]);
                 // Ordena los bienes según la elección del usuario
                 let ordenar = "asc_alf";
@@ -182,7 +182,7 @@ export async function handleMercaderes(opcion) {
             { type: "number", name: "dinero", message: "Dinero del mercader:" },
         ]);
         await incluirMercader(new Mercader(nuevoMercader.id, nuevoMercader.nombre, nuevoMercader.tipo, nuevoMercader.ubicacion, nuevoMercader.dinero, []));
-        console.log("Mercader agregado exitosamente.");
+        console.log("Mercader añadido exitosamente.");
     }
     else if (opcion === "Ver mercaderes") {
         console.log("Lista de mercaderes:");

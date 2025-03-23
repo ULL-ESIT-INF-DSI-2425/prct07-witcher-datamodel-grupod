@@ -2,7 +2,8 @@
  * Clase Bien
  *
  */
-export declare class Bien {
+import { Identificable } from "./Identificable.js";
+export declare class Bien implements Identificable {
     id: string;
     nombre: string;
     descripcion: string;
@@ -40,4 +41,8 @@ export declare class Bien {
      * @returns - Objeto Bien
      */
     static fromObject(bienData: any): Bien;
+    /**
+     * Identificarse muestra un mensaje con el nombre del bien
+     */
+    Identificarse(): void;
 }

@@ -1,8 +1,10 @@
 import { Bien } from "./Bien.js";
+import { Identificable } from "./Identificable.js";
+import { Clasismo } from "./Clasismo.js";
 /**
  * Clase Mercader
 */
-export declare class Mercader {
+export declare class Mercader implements Identificable, Clasismo {
     id: string;
     nombre: string;
     tipo: string;
@@ -30,9 +32,17 @@ export declare class Mercader {
      */
     getDinero(): number;
     /**
+     * Muestra el dinero del mercader
+     */
+    MuestraDinero(): void;
+    /**
      * Método estático que crea un objeto Mercader a partir de un objeto
      * @param mercaderData - Objeto con los datos del mercader
      * @returns - Objeto Mercader
      */
     static fromObject(mercaderData: any): Mercader;
+    /**
+     * Identificarse muestra un mensaje con el nombre del mercader
+     */
+    Identificarse(): void;
 }

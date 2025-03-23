@@ -44,6 +44,17 @@ export class Mercader {
         return this.dinero;
     }
     /**
+     * Muestra el dinero del mercader
+     */
+    MuestraDinero() {
+        if (this.dinero > 10) {
+            console.log(`Tengo suficiente dinero: ${this.dinero} coronas`);
+        }
+        else {
+            console.log(`Estoy pobre! Por favor, comprad mis bienes!`);
+        }
+    }
+    /**
      * Método estático que crea un objeto Mercader a partir de un objeto
      * @param mercaderData - Objeto con los datos del mercader
      * @returns - Objeto Mercader
@@ -51,5 +62,11 @@ export class Mercader {
     static fromObject(mercaderData) {
         return new Mercader(mercaderData.id, mercaderData.nombre, mercaderData.tipo, mercaderData.ubicacion, mercaderData.dinero, mercaderData.bienes.map((bien) => Bien.fromObject(bien)) // Usamos fromObject para los bienes
         );
+    }
+    /**
+     * Identificarse muestra un mensaje con el nombre del mercader
+     */
+    Identificarse() {
+        console.log(`Hola, soy ${this.nombre}`);
     }
 }
