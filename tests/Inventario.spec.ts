@@ -329,7 +329,7 @@ describe("Inventario", () => {
     const resultado = await modificarMercader("51", mercader);
     expect(resultado).toBe(false);
     //eliminamos el mercader
-    let str: string = "20";
+    let str: string = "30";
     await eliminarMercader(str);
   });
 
